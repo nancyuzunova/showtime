@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Profile</title>
-        <link rel="stylesheet" href="profile.css">  
+        <link rel="stylesheet" href="../css/profile.css">
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     </head>
 

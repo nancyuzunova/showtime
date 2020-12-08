@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="../css/index.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <title>PhotoMerge</title>
     </head>
@@ -84,6 +84,6 @@
             </div>
         </div>
     
-        <script src="app.js"></script>
+        <script src="../js/app.js"></script>
       </body>
     </html>
