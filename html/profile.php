@@ -11,15 +11,15 @@
         <div id="topBar">
             <div id="inTopBar">
                 myBook &nbsp &nbsp &nbsp<input type="text" id="searchBox" placeholder="Други потребители">
-                <img src="user.jpg" style="width: 50px; float: right; border-radius:50%;">
+                <img src="../images/user.jpg" style="width: 50px; float: right; border-radius:50%;">
             </div>
         </div>
 
         <!--Cover area-->
         <div id="profileMainDiv">
             <div id="mainDivBackground">
-                <img src="sea.jpg" style="width:100%;">
-                <img id="profilePic" src="user.jpg">
+                <img src="../images/sea.jpg" style="width:100%;">
+                <img id="profilePic" src="../images/user.jpg">
                 <br>
                 <div id="personName">Мария Петрова</div>
                 <br>
@@ -38,22 +38,22 @@
                     <div id="friendsBar">
                         Friends<br>
                         <div id="friends">
-                            <img id="friendsImg" src="user1.jpg">
+                            <img id="friendsImg" src="../images/user1.jpg">
                             <br>
                             Мери Пери
                         </div>
                         <div id="friends">
-                            <img id="friendsImg" src="user1.jpg">
+                            <img id="friendsImg" src="../images/user1.jpg">
                             <br>
                             Мери Пери
                         </div>
                         <div id="friends">
-                            <img id="friendsImg" src="user1.jpg">
+                            <img id="friendsImg" src="../images/user1.jpg">
                             <br>
                             Мери Пери
                         </div>
                         <div id="friends">
-                            <img id="friendsImg" src="user1.jpg">
+                            <img id="friendsImg" src="../images/user1.jpg">
                             <br>
                             Мери Пери
                         </div>
@@ -72,7 +72,7 @@
                     <div id="postsBar">
                     <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>
@@ -83,7 +83,7 @@
                         </div>
                         <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>
@@ -94,7 +94,7 @@
                         </div>
                         <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>

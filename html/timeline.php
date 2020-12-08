@@ -11,7 +11,7 @@
         <div id="topBar">
             <div id="inTopBar">
                 myBook &nbsp &nbsp &nbsp<input type="text" id="searchBox" placeholder="Други потребители">
-                <img src="user.jpg" style="width: 50px; float: right; border-radius:50%;">
+                <img src="../images/user.jpg" style="width: 50px; float: right; border-radius:50%;">
             </div>
         </div>
 
@@ -25,7 +25,7 @@
                 <!--friends area-->
                 <div style="min-height: 400px; flex: 1;">
                     <div id="friendsBar" style="text-align: center; font-size: 20px; color: #405d9b; background-color: #d0d8e4">
-                        <img src="user.jpg" style="width: 150px; border-radius: 50%; border: solid 2px white;">
+                        <img src="../images/user.jpg" style="width: 150px; border-radius: 50%; border: solid 2px white;">
                         <br>
                         Кейти Пери
                     </div>
@@ -43,7 +43,7 @@
                     <div id="postsBar">
                     <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>
@@ -54,7 +54,7 @@
                         </div>
                         <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>
@@ -65,7 +65,7 @@
                         </div>
                         <div id="post">
                             <div>
-                                <img src="user1.jpg" style="width: 75px; margin-right: 4px;">
+                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
                             </div>
                             <div>
                                 <div style="font-weight: bold; color: #405b9d;">First Guy</div>
