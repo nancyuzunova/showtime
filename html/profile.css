@@ -1,0 +1,112 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #d0d8e4;
+}
+#topBar{
+    height: 50px;
+    background-color: #405d9b;
+    color: white;
+}
+
+#inTopBar{
+    width: 800px; 
+    margin: auto;
+   font-size: 30px; 
+}
+
+#searchBox{
+    width: 400px;
+    height: 20px;
+    border-radius: 4px;
+    border: none;
+    padding: 4px;
+    font-size: 14px;
+    background-image: url(search.png);
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+#profileMainDiv{
+    width: 800px;
+    margin: auto;
+    min-height: 300px;
+}
+
+#mainDivBackground{
+    background-color: white;
+    text-align: center;
+    color: #405d9b;
+}
+
+#profilePic{
+    width: 150px;
+    margin-top: -200px;
+    border-radius: 50%;
+    border: solid 2px white;
+}
+#personName{
+    font-size: 25px;
+}
+.menuButtons{
+    width: 100px;
+    display: inline-block;
+    margin: 2px;
+}
+
+#mainContain{
+    display: flex;
+}
+
+#friendsBar{
+    background-color: #ffffff;
+    min-height: 400px;
+    margin-top: 20px;
+    color: #aaa;
+    padding: 8px;;
+}
+
+#friendsImg{
+    width: 75px;
+    height: 75px;
+    float: left;
+    margin: 8px;
+}
+
+#friends{
+    clear: both;
+    font-size: 12px;
+    font-weight: bold;
+    color: #405b9d
+}
+
+textarea{
+    width: 100%;
+    border: none;
+    font-family: tahoma;
+    font-size: 14px;
+    height: 60px;
+}
+
+#postButton{
+    float: right;
+    background-color: #405b9d;
+    border: none;
+    color: white;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 2px;
+    width: 50px;
+}
+
+#postsBar{
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+}
+
+#post{
+    padding: 4px;
+    font-size: 13px;
+    display: flex;
+    margin-bottom: 20px;
+}
