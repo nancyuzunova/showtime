@@ -1,14 +1,35 @@
 <?php
-$host = "localhost";
-$username = "root";
-$password = "";
-$db = "showtime";
 
-$connection = mysqli_connect($host, $username, $password, $db);
+class Connection
+{
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $db = "showtime";
 
-$firstName = "Ivan";
-$lastName = "Nushkov";
+    function connect()
+    {
+        return mysqli_connect($this->host, $this->username, $this->password, $this->db);
+    }
 
-$query = "insert into users (firstName, lastName) values ('$firstName', '$lastName')";
+    function read($query)
+    {
+        $conn = $this->connect();
+        $result = mysqli_query($conn, $query);
+        if (!$result){
+            return false;
+        } else {
+            $data = false;
+            while ($row = mysqli_fetch_assoc($result)){
+                $data[] = $row;
+            }
+            return $data;
+        }
+    }
 
-echo $query;
+    function write($query)
+    {
+        $conn = $this->connect();
+        return mysqli_query($conn, $query);
+    }
+}
