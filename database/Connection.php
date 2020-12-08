@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$db = "myBook_db";
+$db = "showtime";
 
 $connection = mysqli_connect($host, $username, $password, $db);
 
