@@ -1,3 +1,22 @@
+<?php
+
+    include("Connection.php");
+    include("signup.php");
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $signup = new Signup();
+        $result = $signup->evaluate($_POST);
+
+        if($result != ""){
+            echo $result;
+        }
+
+        //echo "<pre>";
+        //print_r();
+        //echo "</pre>";
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,27 +48,27 @@
                         <input type="submit" value="Влез" class="btn solid" />
                     </form>
 
-                    <form action="#" class="sign-up-form">
+                    <form class="sign-up-form" method="POST" action="">
                         <h2 class="title">Регистрация</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Име" />
+                            <input name="first_name" type="text" placeholder="Име" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Фамилия" />
+                            <input name="last_name" type="text" placeholder="Фамилия" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Парола" />
+                            <input name="password1" type="password" placeholder="Парола" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Потвърди парола" />
+                            <input name="password2" type="password" placeholder="Потвърди парола" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="email" placeholder="E-mail" />
+                            <input name="email" type="email" placeholder="E-mail" />
                         </div>
                         <div>
                             Пол: 
