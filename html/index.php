@@ -3,17 +3,26 @@
     include("Connection.php");
     include("signup.php");
 
+    $first_name = "";
+    $last_name = "";
+    $gender = "";
+    $email = "";
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $signup = new Signup();
         $result = $signup->evaluate($_POST);
 
         if($result != ""){
+            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
+            echo "<br>The following errors occurred:<br><br>";
             echo $result;
+            echo "</div>";
         }
 
-        //echo "<pre>";
-        //print_r();
-        //echo "</pre>";
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $gender = $_POST['gender'];
+        $email = $_POST['email'];
     }
 ?>
 
@@ -26,7 +35,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="../css/index.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <title>PhotoMerge</title>
+        <title>Show Time</title>
     </head>
 
     <body>
@@ -44,7 +53,7 @@
                             <i class="fas fa-lock"></i>
                             <input type="password" placeholder="Парола" />
                         </div>
-                
+
                         <input type="submit" value="Влез" class="btn solid" />
                     </form>
 
@@ -52,37 +61,37 @@
                         <h2 class="title">Регистрация</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input name="first_name" type="text" placeholder="Име" />
+                            <input value="<?php echo $first_name ?>" name="first_name" type="text" placeholder="Име" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input name="last_name" type="text" placeholder="Фамилия" />
+                            <input value="<?php echo $last_name ?>"  name="last_name" type="text" placeholder="Фамилия" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input name="password1" type="password" placeholder="Парола" />
+                            <input name="password" type="password" placeholder="Парола" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input name="password2" type="password" placeholder="Потвърди парола" />
+                            <input name="password1" type="password" placeholder="Потвърди парола" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input name="email" type="email" placeholder="E-mail" />
+                            <input value="<?php echo $email ?>"  name="email" type="email" placeholder="E-mail" />
                         </div>
                         <div>
-                            Пол: 
-                            <input type="radio" id="male" name="gender" value="male">
+                            Пол:
+                            <input type="radio" id="male" name="gender" value="male" <?php if (isset($gender) && $gender=="male") echo "checked";?>>
                             <label for="male">Мъж</label><br>
-                            <input type="radio" id="female" name="gender" value="female">
+                            <input type="radio" id="female" name="gender" value="female" <?php if (isset($gender) && $gender=="female") echo "checked";?>>
                             <label for="female">Жена</label><br>
                         </div>
-                        
+
                         <input type="submit" class="btn" value="Регистрация" />
                     </form>
                 </div>
             </div>
-    
+
             <div class="panels-container">
                 <div class="panel left-panel">
                     <div class="content">
@@ -102,7 +111,7 @@
                 </div>
             </div>
         </div>
-    
+
         <script src="../js/app.js"></script>
       </body>
     </html>
