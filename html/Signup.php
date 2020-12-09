@@ -31,9 +31,8 @@ class Signup{
                     users (user_id, first_name, last_name, email, password, gender, url) 
                     values ('$user_id', '$first_name' , '$last_name' , '$email' , '$password' , '$gender' , '$url')";
         
-        return $query;
-        //$DB = new Databese();
-       // $DB->save($query);
+        $DB = new Connection();
+        $DB->write($query);
     }
 
     private function create_userid(){
