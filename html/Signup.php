@@ -19,7 +19,7 @@ class Signup{
     }
 
     public function create_user($data){
-        $user_id = create_userid();
+        $user_id = $this->create_userid();
         $first_name = $data['first_name'];
         $last_name = $data['last_name'];
         $email = $data['email'];
@@ -46,6 +46,4 @@ class Signup{
 
         return $number;
     }
-
-
 }
