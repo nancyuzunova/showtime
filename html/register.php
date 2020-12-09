@@ -18,6 +18,7 @@
             echo "<br>The following errors occurred:<br><br>";
             echo $result;
             echo "</div>";
+            header("Location: login_page.php?error=true");
         } else {
             header("Location: profile.php");
             die;
