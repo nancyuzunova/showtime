@@ -19,11 +19,11 @@
                         <h2 class="title">Вход</h2>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="E-mail" />
+                            <input name="email" type="text" placeholder="E-mail" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Парола" />
+                            <input name="password" type="password" placeholder="Парола" />
                         </div>
 
                         <input type="submit" value="Влез" class="btn solid" />
@@ -53,9 +53,9 @@
                         </div>
                         <div>
                             Пол:
-                            <input type="radio" id="male" name="gender" value="male" <?php if (isset($gender) && $gender=="male") echo "checked";?>>
+                            <input type="radio" id="male" name="gender" value="">
                             <label for="male">Мъж</label><br>
-                            <input type="radio" id="female" name="gender" value="female" <?php if (isset($gender) && $gender=="female") echo "checked";?>>
+                            <input type="radio" id="female" name="gender" value="">
                             <label for="female">Жена</label><br>
                         </div>
 
