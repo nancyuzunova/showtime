@@ -2,12 +2,29 @@
 
 class Signup{
 
+    const EMAIL_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+
     private $error = "";
 
     public function evaluate($data){
         foreach($data as $key => $value){
             if(empty($value)){
-                $this->error = $this->error . $key . "is empty!<br>";
+                $this->error = $this->error . $key . " is empty!<br>";
+            }
+            if ($key == "email"){
+                if (!preg_match(self::EMAIL_PATTERN, $value)){
+                    $this->error = $this->error . "Invalid email address!<br>";
+                }
+            }
+            if ($key == "first_name"){
+                if (is_numeric($value)){
+                    $this->error = $this->error . "First name can't be a number!<br>";
+                }
+            }
+            if ($key == "last_name"){
+                if (is_numeric($value)){
+                    $this->error = $this->error . "Last name can't be a number!<br>";
+                }
             }
         }
 
