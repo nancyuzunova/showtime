@@ -8,6 +8,7 @@ class Signup{
 
     public function evaluate($data){
         foreach($data as $key => $value){
+            $value = trim($value);
             if(empty($value)){
                 $this->error = $this->error . $key . " is empty!<br>";
             }
@@ -20,10 +21,16 @@ class Signup{
                 if (is_numeric($value)){
                     $this->error = $this->error . "First name can't be a number!<br>";
                 }
+                if (strstr($value, " ")){
+                    $this->error = $this->error . "First name can't have spaces!<br>";
+                }
             }
             if ($key == "last_name"){
                 if (is_numeric($value)){
                     $this->error = $this->error . "Last name can't be a number!<br>";
+                }
+                if (strstr($value, " ")){
+                    $this->error = $this->error . "Last name can't have spaces!<br>";
                 }
             }
         }
@@ -37,8 +44,8 @@ class Signup{
 
     public function create_user($data){
         $user_id = $this->create_userid();
-        $first_name = $data['first_name'];
-        $last_name = $data['last_name'];
+        $first_name = ucfirst($data['first_name']);
+        $last_name = ucfirst($data['last_name']);
         $email = $data['email'];
         $password = $data['password'];
         $gender = $data['gender'];
