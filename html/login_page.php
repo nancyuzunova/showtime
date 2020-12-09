@@ -29,7 +29,7 @@
                         <input type="submit" value="Влез" class="btn solid" />
                     </form>
 
-                    <form class="sign-up-form" method="POST" action="registration.php">
+                    <form class="sign-up-form" method="POST" action="register.php">
                         <h2 class="title">Регистрация</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>

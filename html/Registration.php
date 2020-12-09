@@ -1,6 +1,6 @@
 <?php
 
-class Signup{
+class Registration{
 
     const EMAIL_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 

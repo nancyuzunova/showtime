@@ -1,7 +1,7 @@
 <?php
 
     include("Connection.php");
-    include("signup.php");
+    include("Registration.php");
 
     $first_name = "";
     $last_name = "";
@@ -9,7 +9,7 @@
     $email = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $signup = new Signup();
+        $signup = new Registration();
         $result = $signup->evaluate($_POST);
 
         if($result != ""){
