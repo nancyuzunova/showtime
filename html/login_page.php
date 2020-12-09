@@ -15,7 +15,7 @@
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
-                    <form action="#" class="sign-in-form">
+                    <form class="sign-in-form" method="post" action="login.php">
                         <h2 class="title">Вход</h2>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>

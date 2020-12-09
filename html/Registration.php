@@ -56,7 +56,12 @@ class Registration{
                     values ('$user_id', '$first_name' , '$last_name' , '$email' , '$password' , '$gender' , '$url')";
         
         $DB = new Connection();
-        $DB->write($query);
+        $result = $DB->write($query);
+        if ($result){
+            $_SESSION['showtime_userid'] = $user_id;
+        } else {
+            $this->error = "Invalid input!";
+        }
     }
 
     private function create_userid(){
