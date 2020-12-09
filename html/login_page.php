@@ -1,34 +1,3 @@
-<?php
-
-    include("Connection.php");
-    include("signup.php");
-
-    $first_name = "";
-    $last_name = "";
-    $gender = "";
-    $email = "";
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $signup = new Signup();
-        $result = $signup->evaluate($_POST);
-
-        if($result != ""){
-            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
-            echo "<br>The following errors occurred:<br><br>";
-            echo $result;
-            echo "</div>";
-        } else {
-            header("Location: profile.php");
-            die;
-        }
-
-        $first_name = $_POST['first_name'];
-        $last_name = $_POST['last_name'];
-        $gender = $_POST['gender'];
-        $email = $_POST['email'];
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -60,15 +29,15 @@
                         <input type="submit" value="Влез" class="btn solid" />
                     </form>
 
-                    <form class="sign-up-form" method="POST" action="">
+                    <form class="sign-up-form" method="POST" action="registration.php">
                         <h2 class="title">Регистрация</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input value="<?php echo $first_name ?>" name="first_name" type="text" placeholder="Име" />
+                            <input value="" name="first_name" type="text" placeholder="Име" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input value="<?php echo $last_name ?>"  name="last_name" type="text" placeholder="Фамилия" />
+                            <input value=""  name="last_name" type="text" placeholder="Фамилия" />
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
@@ -80,7 +49,7 @@
                         </div>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
-                            <input value="<?php echo $email ?>"  name="email" type="email" placeholder="E-mail" />
+                            <input value="" name="email" type="email" placeholder="E-mail" />
                         </div>
                         <div>
                             Пол:
