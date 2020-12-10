@@ -1,6 +1,8 @@
 <?php
     session_start();
     print_r($_SESSION);
+    include("Connection.php");
+    include("Loging.php");
 ?>
 
 <!DOCTYPE html>

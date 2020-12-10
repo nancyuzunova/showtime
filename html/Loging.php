@@ -26,4 +26,17 @@ class Loging
         }
         return $this->error;
     }
+
+    public function check_login($id){
+        $query = "select user_id from users where user_id = '$id' limit 1";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+
+        if($result){
+            return true;
+        }
+
+        return false;
+    }
 }
