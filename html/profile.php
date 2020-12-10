@@ -1,8 +1,12 @@
 <?php
     session_start();
-    print_r($_SESSION);
     include("Connection.php");
     include("Loging.php");
+    include("User.php");
+
+    $id = $_SESSION['showtime_userid'];
+    $user = new User();
+    $user_data = $user->get_data($id);
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +32,7 @@
                 <img src="../images/sea.jpg" style="width:100%;">
                 <img id="profilePic" src="../images/user.jpg">
                 <br>
-                <div id="personName">Мария Петрова</div>
+                <div id="personName"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></div>
                 <br>
                 <div class="menuButtons">Timeline</div> 
                 <div class="menuButtons">About</div> 

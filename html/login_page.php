@@ -53,9 +53,9 @@
                         </div>
                         <div>
                             Пол:
-                            <input type="radio" id="male" name="gender" value="">
+                            <input type="radio" id="male" name="gender" value="male">
                             <label for="male">Мъж</label><br>
-                            <input type="radio" id="female" name="gender" value="">
+                            <input type="radio" id="female" name="gender" value="female">
                             <label for="female">Жена</label><br>
                         </div>
 

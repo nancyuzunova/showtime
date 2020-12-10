@@ -5,7 +5,7 @@ class User{
 
     public function get_data($id){
         $query = "select * from users where user_id = '$id' limit 1";
-        $DB = new Database();
+        $DB = new Connection();
         $result = $DB->read($query);
 
         if($result){
