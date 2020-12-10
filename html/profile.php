@@ -4,11 +4,14 @@
     include("Loging.php");
     include("User.php");
 
-print_r($_SESSION);
-
-    $id = $_SESSION['showtime_userid'];
-    $user = new User();
-    $user_data = $user->get_data($id);
+    if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
+        $id = $_SESSION['showtime_userid'];
+        $user = new User();
+        $user_data = $user->get_data($id);
+    }else{
+        header("Location: login_page.php");
+        die;
+    }
 ?>
 
 <!DOCTYPE html>
