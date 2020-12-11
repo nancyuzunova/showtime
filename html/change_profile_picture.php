@@ -6,9 +6,9 @@
     include("Post.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
-        $user_id = $_SESSION['showtime_userid'];
+        $userId = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->getUser($user_id);
+        $userData = $user->getUser($userId);
     }else{
         header("Location: login_page.php");
         die;
@@ -16,8 +16,17 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
-            $filename = $_FILES['file']['name'];
-            move_uploaded_file($_FILES['file']['tmp_name'], "uploads/" . $filename);
+            $filename = "../uploads/" . $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+
+            if (file_exists($filename)){
+                $query = "update users set profile_image = '$filename' where user_id = $userId";
+                $connection = new Connection();
+                $connection->write($query);
+
+                header("Location: profile.php");
+                die();
+            }
         } else {
             echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
             echo "<br>The following errors occurred:<br><br>";

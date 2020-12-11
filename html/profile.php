@@ -6,9 +6,9 @@
     include("Post.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
-        $user_id = $_SESSION['showtime_userid'];
+        $userId = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->getUser($user_id);
+        $userData = $user->getUser($userId);
     }else{
         header("Location: login_page.php");
         die;
@@ -16,8 +16,8 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $post = new Post();
-        $user_id = $_SESSION['showtime_userid'];
-        $result = $post->createPost($user_id,$_POST);
+        $userId = $_SESSION['showtime_userid'];
+        $result = $post->createPost($userId,$_POST);
 
         if($result == ""){
             header("Location: profile.php");
@@ -31,13 +31,13 @@
     }
     //Collect posts
     $post = new Post();
-    $user_id = $_SESSION['showtime_userid'];
-    $posts = $post->getPosts($user_id);
+    $userId = $_SESSION['showtime_userid'];
+    $posts = $post->getPosts($userId);
 
     //Collect friends
     $user = new User();
-    $user_id = $_SESSION['showtime_userid'];
-    $friends = $user->getFriends($user_id);
+    $userId = $_SESSION['showtime_userid'];
+    $friends = $user->getFriends($userId);
 ?>
 
 <!DOCTYPE html>
@@ -55,12 +55,18 @@
             <div id="mainDivBackground">
                 <img src="../images/sea.jpg" style="width:100%;">
                 <span style="font-size: 11px;">
-                    <img id="profilePic" src="../images/user.jpg">
+                     <?php
+                     $image = "../images/default-avatar.png";
+                     if (file_exists($userData['profile_image'])){
+                         $image = $userData['profile_image'];
+                     }
+                     ?>
+                    <img id="profilePic" src="<?php echo $image?>">
                     <br>
                     <a style="text-decoration: none;" href="change_profile_picture.php">Change picture</a>
                 </span>
                 <br>
-                <div id="personName"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></div>
+                <div id="personName"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></div>
                 <br>
                 <div class="menuButtons">Timeline</div> 
                 <div class="menuButtons">About</div> 
