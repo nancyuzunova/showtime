@@ -27,7 +27,7 @@ class Loging
         return $this->error;
     }
 
-    public function check_login($id){
+    public function checkLogin($id){
         $query = "select user_id from users where user_id = '$id' limit 1";
 
         $DB = new Connection();
