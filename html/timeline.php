@@ -1,3 +1,36 @@
+<?php
+    session_start();
+    include("Connection.php");
+    include("Loging.php");
+    include("User.php");
+    include("Post.php");
+
+    if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
+        $user_id = $_SESSION['showtime_userid'];
+        $user = new User();
+        $user_data = $user->get_data($user_id);
+    }else{
+        header("Location: login_page.php");
+        die;
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $post = new Post();
+        $user_id = $_SESSION['showtime_userid'];
+        $result = $post->create_post($user_id,$_POST);
+
+        if($result == ""){
+            header("Location: profile.php");
+            die;
+        }else{
+            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
+            echo "<br>The following errors occurred:<br><br>";
+            echo $result;
+            echo "</div>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,14 +40,7 @@
     </head>
 
     <body>
-        <!--Page top bar-->
-        <div id="topBar">
-            <div id="inTopBar">
-                myBook &nbsp &nbsp &nbsp<input type="text" id="searchBox" placeholder="Други потребители">
-                <img src="../images/user.jpg" style="width: 50px; float: right; border-radius:50%;">
-            </div>
-        </div>
-
+        <?php include("header.php") ?>
         <!--Cover area-->
         <div id="profileMainDiv">
            
@@ -27,7 +53,7 @@
                     <div id="friendsBar" style="text-align: center; font-size: 20px; color: #405d9b; background-color: #d0d8e4">
                         <img src="../images/user.jpg" style="width: 150px; border-radius: 50%; border: solid 2px white;">
                         <br>
-                        Кейти Пери
+                        <a style="text-decoration: none;" href="profile.php"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></a>
                     </div>
                 </div>
 
