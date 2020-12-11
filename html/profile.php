@@ -12,6 +12,10 @@
         header("Location: login_page.php");
         die;
     }
+
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        print_r($_POST);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +86,11 @@
                 <!--post area-->
                 <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                        <textarea placeholder="whats on your mind?"></textarea>
-                        <input id="postButton" type="submit" value="post">
-                        <br>
+                        <form method="post">
+                            <textarea name="post" placeholder="whats on your mind?"></textarea>
+                            <input id="postButton" type="submit" value="post">
+                            <br>
+                        </form>
                     </div>
 
                     <!--Posts-->
