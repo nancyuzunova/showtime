@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("Connection.php");
-    include("Loging.php");
+    include("Logging.php");
     include("User.php");
     include("Post.php");
 
@@ -15,26 +15,15 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $post = new Post();
-        $user_id = $_SESSION['showtime_userid'];
-        $result = $post->create_post($user_id,$_POST);
-
-        if($result == ""){
-            header("Location: profile.php");
-            die;
-        }else{
+        if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
+            $filename = $_FILES['file']['name'];
+            move_uploaded_file($_FILES['file']['tmp_name'], "uploads/" . $filename);
+        } else {
             echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
             echo "<br>The following errors occurred:<br><br>";
-            echo $result;
+            echo "Please add a valid image!";
             echo "</div>";
         }
-    }
-
-    if($_SERVER['REQUEST_METHOD'] == "POST"){
-        echo "<pre>";
-        print_r($_POST);
-        print_r($_FILES);
-        echo "</pre>";
     }
 ?>
 
@@ -59,7 +48,7 @@
                     <form method="post" enctype="multipart/form-data">
                         <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
                             <input type="file" name="file">
-                            <input id="postButton" type="submit" value="post">
+                            <input id="postButton" type="submit" value="Change" style="width: 100px;">
                             <br>
                         </div>
                     </form>

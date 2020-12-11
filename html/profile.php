@@ -1,7 +1,7 @@
 <?php
     session_start();
     include("Connection.php");
-    include("Loging.php");
+    include("Logging.php");
     include("User.php");
     include("Post.php");
 

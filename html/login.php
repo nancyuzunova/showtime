@@ -2,13 +2,13 @@
     session_start();
 
     include("Connection.php");
-    include("Loging.php");
+    include("Logging.php");
 
     $email = "";
     $password = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $login = new Loging();
+        $login = new Logging();
         $result = $login->login($_POST);
 
         if ($result != "") {

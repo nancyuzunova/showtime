@@ -1,6 +1,6 @@
 <?php
 
-class Loging
+class Logging
 {
     private $error = "";
 
