@@ -29,11 +29,15 @@
             echo "</div>";
         }
     }
-
+    //Collect posts
     $post = new Post();
     $user_id = $_SESSION['showtime_userid'];
-
     $posts = $post->get_posts($user_id);
+
+    //Collect friends
+    $user = new User();
+    $user_id = $_SESSION['showtime_userid'];
+    $friends = $user->get_friends($user_id);
 ?>
 
 <!DOCTYPE html>
@@ -78,26 +82,13 @@
                 <div style="min-height: 400px; flex: 1;">
                     <div id="friendsBar">
                         Friends<br>
-                        <div id="friends">
-                            <img id="friendsImg" src="../images/user1.jpg">
-                            <br>
-                            Мери Пери
-                        </div>
-                        <div id="friends">
-                            <img id="friendsImg" src="../images/user1.jpg">
-                            <br>
-                            Мери Пери
-                        </div>
-                        <div id="friends">
-                            <img id="friendsImg" src="../images/user1.jpg">
-                            <br>
-                            Мери Пери
-                        </div>
-                        <div id="friends">
-                            <img id="friendsImg" src="../images/user1.jpg">
-                            <br>
-                            Мери Пери
-                        </div>
+                        <?php
+                        if($friends){
+                            foreach ($friends as $friend_row){
+                                include("friend.php");
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
 
