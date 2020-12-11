@@ -54,7 +54,11 @@
         <div id="profileMainDiv">
             <div id="mainDivBackground">
                 <img src="../images/sea.jpg" style="width:100%;">
-                <img id="profilePic" src="../images/user.jpg">
+                <span style="font-size: 11px;">
+                    <img id="profilePic" src="../images/user.jpg">
+                    <br>
+                    <a style="text-decoration: none;" href="change_profile_picture.php">Change picture</a>
+                </span>
                 <br>
                 <div id="personName"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></div>
                 <br>

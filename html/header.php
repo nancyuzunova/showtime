@@ -5,6 +5,8 @@
         <a href="logout.php">
             <span style="font-size:11px; color: white; float: right; margin: 10px;">Изход</span>
         </a>
-        <img src="../images/user.jpg" style="width: 50px; float: right; border-radius:50%;">
+        <a href="profile.php" style="text-decoration: none;">
+            <img src="../images/user.jpg" style="width: 50px; float: right; border-radius:50%;">
+        </a>
     </div>
 </div>
