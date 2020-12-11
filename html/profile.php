@@ -116,6 +116,8 @@
                         <?php
                             if($posts){
                                 foreach ($posts as $row){
+                                    $user = new User();
+                                    $row_user = $user->get_user($row['user_id']);
                                     include("user_post.php");
                                 }
                             }
