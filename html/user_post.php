@@ -1,9 +1,9 @@
     <div id="post">
         <div>
             <?php
-                $image = "male.jpg";
+                $image = "../images/male.jpg";
                 if($row_user['gender'] == "female"){
-                    $image = "female.jpg";
+                    $image = "../images/female.jpg";
                 }
 
             ?>
