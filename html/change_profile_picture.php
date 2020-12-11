@@ -16,23 +16,36 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
-            $filename = "../uploads/" . $_FILES['file']['name'];
-            move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+            if ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png"){
+                $allowedSize = 1024 * 1024 * 7; // 7 MB
+                if ($_FILES['file']['size'] <= $allowedSize){
+                    $filename = "../uploads/" . $_FILES['file']['name'];
+                    move_uploaded_file($_FILES['file']['tmp_name'], $filename);
 
-            if (file_exists($filename)){
-                $query = "update users set profile_image = '$filename' where user_id = $userId";
-                $connection = new Connection();
-                $connection->write($query);
+                    if (file_exists($filename)){
+                        $query = "update users set profile_image = '$filename' where user_id = $userId";
+                        $connection = new Connection();
+                        $connection->write($query);
 
-                header("Location: profile.php");
-                die();
+                        header("Location: profile.php");
+                        die();
+                    }
+                } else {
+                    displayErrorMessage("Only images of size 7 MB or lower are allowed!");
+                }
+            } else {
+                displayErrorMessage("Only images of JPEG or PNG type are allowed!");
             }
         } else {
-            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
-            echo "<br>The following errors occurred:<br><br>";
-            echo "Please add a valid image!";
-            echo "</div>";
+            displayErrorMessage("Please add a valid image!");
         }
+    }
+
+    function displayErrorMessage($message){
+        echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
+        echo "<br>The following errors occurred:<br><br>";
+        echo $message;
+        echo "</div>";
     }
 ?>
 
