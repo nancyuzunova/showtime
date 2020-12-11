@@ -8,7 +8,7 @@
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $user_id = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->get_data($user_id);
+        $user_data = $user->getUser($user_id);
     }else{
         header("Location: login_page.php");
         die;
@@ -17,7 +17,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $post = new Post();
         $user_id = $_SESSION['showtime_userid'];
-        $result = $post->create_post($user_id,$_POST);
+        $result = $post->createPost($user_id,$_POST);
 
         if($result == ""){
             header("Location: profile.php");
@@ -32,12 +32,12 @@
     //Collect posts
     $post = new Post();
     $user_id = $_SESSION['showtime_userid'];
-    $posts = $post->get_posts($user_id);
+    $posts = $post->getPosts($user_id);
 
     //Collect friends
     $user = new User();
     $user_id = $_SESSION['showtime_userid'];
-    $friends = $user->get_friends($user_id);
+    $friends = $user->getFriends($user_id);
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +102,7 @@
                             if($posts){
                                 foreach ($posts as $row){
                                     $user = new User();
-                                    $row_user = $user->get_user($row['user_id']);
+                                    $row_user = $user->getUser($row['user_id']);
                                     include("user_post.php");
                                 }
                             }

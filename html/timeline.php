@@ -8,7 +8,7 @@
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $user_id = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->get_data($user_id);
+        $user_data = $user->getUser($user_id);
     }else{
         header("Location: login_page.php");
         die;
@@ -17,7 +17,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $post = new Post();
         $user_id = $_SESSION['showtime_userid'];
-        $result = $post->create_post($user_id,$_POST);
+        $result = $post->createPost($user_id,$_POST);
 
         if($result == ""){
             header("Location: profile.php");

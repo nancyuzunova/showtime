@@ -1,13 +1,13 @@
 <?php
 
-
 class Post{
+
     private $error = "";
 
-    public function create_post($user_id, $data){
+    public function createPost($user_id, $data){
         if(!empty($data['post'])){
             $post = addslashes($data['post']);
-            $post_id =$this->create_postid();
+            $post_id =$this->createPostId();
 
             $query = "insert into posts (user_id, post_id, post) values ('$user_id', '$post_id', '$post')";
 
@@ -21,7 +21,7 @@ class Post{
         return $this->error;
     }
 
-    public function get_posts($user_id){
+    public function getPosts($user_id){
         $query = "select * from posts where user_id = '$user_id' order by id desc limit 10";
 
         $DB = new Connection();
@@ -34,7 +34,7 @@ class Post{
         }
     }
 
-    private function create_postid(){
+    private function createPostId(){
         $length = rand(4, 11);
         $number = "";
         for($i=0; $i<$length; $i++){

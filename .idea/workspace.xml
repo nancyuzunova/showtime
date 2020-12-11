@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="552637f0-32d9-4256-8889-3a915140c882" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/html/change_profile_picture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/showtime.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/Loging.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Loging.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/Post.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html/timeline.php" beforeDir="false" afterPath="$PROJECT_DIR$/html/timeline.php" afterDir="false" />
     </list>
@@ -73,7 +78,8 @@
       <workItem from="1607597693688" duration="5000" />
       <workItem from="1607597708462" duration="9341000" />
       <workItem from="1607690469676" duration="13000" />
-      <workItem from="1607690490358" duration="13068000" />
+      <workItem from="1607690490358" duration="13190000" />
+      <workItem from="1607705709930" duration="9000" />
     </task>
     <servers />
   </component>
