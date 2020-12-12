@@ -1,12 +1,7 @@
 <?php
-    session_start();
-    include("Connection.php");
-    include("Logging.php");
-    include("User.php");
-    include("Post.php");
-    include("ImageEditor.php");
+    include("loader.php");
 
-    if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
+if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $userId = $_SESSION['showtime_userid'];
         $user = new User();
         $userData = $user->getUser($userId);

@@ -1,9 +1,5 @@
 <?php
-    session_start();
-    include("Connection.php");
-    include("Logging.php");
-    include("User.php");
-    include("Post.php");
+    include("loader.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $user_id = $_SESSION['showtime_userid'];
