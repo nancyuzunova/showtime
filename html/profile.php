@@ -18,7 +18,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $post = new Post();
         $userId = $_SESSION['showtime_userid'];
-        $result = $post->createPost($userId,$_POST);
+        $result = $post->createPost($userId,$_POST, $_FILES);
 
         if($result == ""){
             header("Location: profile.php");
@@ -105,8 +105,9 @@
                 <!--post area-->
                 <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             <textarea name="post" placeholder="whats on your mind?"></textarea>
+                            <input type="file" name="file">
                             <input id="postButton" type="submit" value="post">
                             <br>
                         </form>
