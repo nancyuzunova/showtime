@@ -100,6 +100,17 @@
                             <input type="file" name="file">
                             <input id="postButton" type="submit" value="Change" style="width: 100px;">
                             <br>
+                            <div style="text-align: center;">
+                                <br><br>
+                                <?php
+                                    if (isset($_GET['change']) && $_GET['change'] == "cover"){
+                                        $change = "cover";
+                                        echo "<img src='$userData[cover_image]' style='max-width: 500px;'>";
+                                    }else{
+                                        echo "<img src='$userData[profile_image]' style='max-width: 500px;'>";
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </form>
                 </div>
