@@ -4,6 +4,7 @@
     include("Logging.php");
     include("User.php");
     include("Post.php");
+    include("ImageEditor.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $userId = $_SESSION['showtime_userid'];
@@ -38,6 +39,8 @@
     $user = new User();
     $userId = $_SESSION['showtime_userid'];
     $friends = $user->getFriends($userId);
+
+    $editor = new ImageEditor();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +59,7 @@
                 <?php
                 $cover = "../images/sea.jpg";
                 if (file_exists($userData['cover_image'])){
-                    $cover = $userData['cover_image'];
+                    $cover = $editor->getThumbCover($userData['cover_image']);
                 }
                 ?>
                 <img src="<?php echo $cover?>" style="width:100%;">
@@ -64,7 +67,7 @@
                      <?php
                      $image = "../images/default-avatar.png";
                      if (file_exists($userData['profile_image'])){
-                         $image = $userData['profile_image'];
+                         $image = $editor->getThumbProfile($userData['profile_image']);
                      }
                      ?>
                     <img id="profilePic" src="<?php echo $image?>">

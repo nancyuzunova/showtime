@@ -38,12 +38,12 @@
                         if (file_exists($userData['cover_image'])){
                             unlink($userData['cover_image']);
                         }
-                        $editor->cropImage($filename, $filename, 1366, 488);
+                        $editor->resizeImage($filename, $filename, 1500, 1500);
                     } else {
                         if (file_exists($userData['profile_image'])){
                             unlink($userData['profile_image']);
                         }
-                        $editor->cropImage($filename, $filename, 800, 800);
+                        $editor->resizeImage($filename, $filename, 1500, 1500);
                     }
 
                     if (file_exists($filename)){
