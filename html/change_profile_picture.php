@@ -6,6 +6,7 @@
     include("Post.php");
     include("ImageEditor.php");
 
+    //check if user is logged in
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $userId = $_SESSION['showtime_userid'];
         $user = new User();
@@ -49,11 +50,17 @@
                     if (file_exists($filename)){
                         if ($change == "cover"){
                             $query = "update users set cover_image = '$filename' where user_id = $userId";
+                            $_POST['is_cover_image'] = 1;
                         } else {
                             $query = "update users set profile_image = '$filename' where user_id = $userId";
+                            $_POST['is_profile_image'] = 1;
                         }
                         $connection = new Connection();
                         $connection->write($query);
+
+                        //create a post
+                        $post = new Post();
+                        $post->createPost($userId, $_POST, $filename);
 
                         header("Location: profile.php");
                         die();

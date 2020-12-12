@@ -2,7 +2,8 @@
 <?php
     $headerImage = "../images/default-avatar.png";
     if(isset($userData)){
-        $headerImage = $userData['profile_image'];
+        $editor = new ImageEditor();
+        $headerImage = $editor->getThumbProfile($userData['profile_image']);
     }
 ?>
 

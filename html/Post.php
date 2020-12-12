@@ -7,27 +7,43 @@ class Post
 
     public function createPost($userId, $data, $files)
     {
-        if (!empty($data['post']) || !empty($files['file']['name'])) {
+        if (!empty($data['post']) || !empty($files['file']['name']) || isset($data['is_profile_image']) || isset($data['is_cover_image'])) {
             $image = "";
             $hasImage = 0;
+            $isCoverImage = 0;
+            $isProfileImage = 0;
 
-            if (!empty($files['file']['name'])) {
-                $folder = "../uploads/" . $userId . "/";
-                if (!file_exists($folder)) {
-                    mkdir($folder, 0777, true);
-                }
-
-                $editor = new ImageEditor();
-                $image = $folder . $_FILES['file']['name'] . date("Y-m-d H-i-s") . ".jpg";
-                move_uploaded_file($_FILES['file']['tmp_name'], $image);
-                $editor->resizeImage($image, $image, 1500, 1500);
+            if (isset($data['is_profile_image']) || isset($data['is_cover_image'])){
+                $image = $files;
                 $hasImage = 1;
+                if (isset($data['is_cover_image'])) {
+                    $isCoverImage = 1;
+                }
+                if (isset($data['is_profile_image'])) {
+                    $isProfileImage = 1;
+                }
+            } else {
+                if (!empty($files['file']['name'])) {
+                    $folder = "../uploads/" . $userId . "/";
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777, true);
+                    }
+
+                    $editor = new ImageEditor();
+                    $image = $folder . $_FILES['file']['name'] . date("Y-m-d H-i-s") . ".jpg";
+                    move_uploaded_file($_FILES['file']['tmp_name'], $image);
+                    $editor->resizeImage($image, $image, 1500, 1500);
+                    $hasImage = 1;
+                }
             }
 
-            $post = addslashes($data['post']);
+            $post = "";
+            if (isset($data['post'])){
+                $post = addslashes($data['post']);
+            }
             $post_id = $this->createPostId();
 
-            $query = "insert into posts (user_id, post_id, post, image, has_image) values ('$userId', '$post_id', '$post', '$image', '$hasImage')";
+            $query = "insert into posts (user_id, post_id, post, image, has_image, is_profile_image, is_cover_image) values ('$userId', '$post_id', '$post', '$image', '$hasImage', '$isProfileImage', '$isCoverImage')";
 
             $DB = new Connection();
             $DB->write($query);
