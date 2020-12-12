@@ -4,6 +4,7 @@
     include("Logging.php");
     include("User.php");
     include("Post.php");
+    include("ImageEditor.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $userId = $_SESSION['showtime_userid'];
@@ -16,11 +17,14 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
-            if ($_FILES['file']['type'] == "image/jpeg" || $_FILES['file']['type'] == "image/png"){
+            if ($_FILES['file']['type'] == "image/jpeg"){
                 $allowedSize = 1024 * 1024 * 7; // 7 MB
                 if ($_FILES['file']['size'] <= $allowedSize){
                     $filename = "../uploads/" . $_FILES['file']['name'];
                     move_uploaded_file($_FILES['file']['tmp_name'], $filename);
+
+                    $editor = new ImageEditor();
+                    $editor->cropImage($filename, $filename, 800, 800);
 
                     if (file_exists($filename)){
                         $query = "update users set profile_image = '$filename' where user_id = $userId";
@@ -34,7 +38,7 @@
                     displayErrorMessage("Only images of size 7 MB or lower are allowed!");
                 }
             } else {
-                displayErrorMessage("Only images of JPEG or PNG type are allowed!");
+                displayErrorMessage("Only images of JPEG type are allowed!");
             }
         } else {
             displayErrorMessage("Please add a valid image!");
