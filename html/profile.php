@@ -53,7 +53,13 @@
         <!--Cover area-->
         <div id="profileMainDiv">
             <div id="mainDivBackground">
-                <img src="../images/sea.jpg" style="width:100%;">
+                <?php
+                $cover = "../images/sea.jpg";
+                if (file_exists($userData['cover_image'])){
+                    $cover = $userData['cover_image'];
+                }
+                ?>
+                <img src="<?php echo $cover?>" style="width:100%;">
                 <span style="font-size: 11px;">
                      <?php
                      $image = "../images/default-avatar.png";
@@ -63,7 +69,8 @@
                      ?>
                     <img id="profilePic" src="<?php echo $image?>">
                     <br>
-                    <a style="text-decoration: none;" href="change_profile_picture.php">Change picture</a>
+                    <a style="text-decoration: none;" href="change_profile_picture.php?change=profile">Change profile picture</a> |
+                    <a style="text-decoration: none;" href="change_profile_picture.php?change=cover">Change cover</a>
                 </span>
                 <br>
                 <div id="personName"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></div>
