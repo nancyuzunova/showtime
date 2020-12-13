@@ -17,14 +17,14 @@
             echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
             if ($row['is_profile_image']) {
                 $pronoun = "his";
-                if ($row_user['gender'] == "Female") {
+                if ($row_user['gender'] == "female") {
                     $pronoun = "her";
                 }
                 echo "<span style='font-weight: normal; color: gray'> updated $pronoun profile image</span>";
             }
             if ($row['is_cover_image']) {
                 $pronoun = "his";
-                if ($row_user['gender'] == "Female") {
+                if ($row_user['gender'] == "female") {
                     $pronoun = "her";
                 }
                 echo "<span style='font-weight: normal; color: gray'> updated $pronoun cover image</span>";
