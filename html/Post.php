@@ -27,6 +27,7 @@ class Post
                     $folder = "../uploads/" . $userId . "/";
                     if (!file_exists($folder)) {
                         mkdir($folder, 0777, true);
+                        file_put_contents($folder . "index.php", "");
                     }
 
                     $editor = new ImageEditor();
