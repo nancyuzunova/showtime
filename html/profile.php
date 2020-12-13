@@ -5,6 +5,9 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
         $userId = $_SESSION['showtime_userid'];
         $user = new User();
         $userData = $user->getUser($userId);
+        if (isset($_GET['id'])) {
+            $userData = $user->getUser($_GET['id']);
+        }
     }else{
         header("Location: login_page.php");
         die;
@@ -25,14 +28,15 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
             echo "</div>";
         }
     }
+    //Collect user id
+    $userId = $userData['user_id'];
+
     //Collect posts
     $post = new Post();
-    $userId = $_SESSION['showtime_userid'];
     $posts = $post->getPosts($userId);
 
     //Collect friends
     $user = new User();
-    $userId = $_SESSION['showtime_userid'];
     $friends = $user->getFriends($userId);
 
     $editor = new ImageEditor();
