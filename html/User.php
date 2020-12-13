@@ -3,8 +3,8 @@
 class User{
 
     public function getUser($id){
+        $id = addslashes($id);
         $query = "select * from users where user_id = '$id' limit 1";
-
         $DB = new Connection();
         $result = $DB->read($query);
 
@@ -16,6 +16,7 @@ class User{
     }
 
     public function getFriends($id){
+        $id = addslashes($id);
         $query = "select * from users where user_id != '$id' ";
 
         $DB = new Connection();

@@ -57,6 +57,7 @@ class Post
 
     public function getPosts($user_id)
     {
+        $user_id = addslashes($user_id);
         $query = "select * from posts where user_id = '$user_id' order by id desc limit 10";
 
         $DB = new Connection();
