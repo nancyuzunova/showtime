@@ -1,9 +1,9 @@
 <!--Page top bar-->
 <?php
     $headerImage = "../images/default-avatar.png";
-    if(isset($userData)){
+    if(isset($userData) && file_exists($USER['profile_image'])){
         $editor = new ImageEditor();
-        $headerImage = $editor->getThumbProfile($userData['profile_image']);
+        $headerImage = $editor->getThumbProfile($USER['profile_image']);
     }
 ?>
 
