@@ -27,6 +27,7 @@ class Post
                     $folder = "../uploads/" . $userId . "/";
                     if (!file_exists($folder)) {
                         mkdir($folder, 0777, true);
+                        file_put_contents($folder . "index.php", "");
                     }
 
                     $editor = new ImageEditor();
@@ -68,6 +69,49 @@ class Post
         } else {
             return false;
         }
+    }
+
+    public function getPostById($postId)
+    {
+        $postId = addslashes($postId);
+        $query = "select * from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+
+        if ($result) {
+            return $result[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function deletePost($postId){
+        if (!is_numeric($postId)){
+            return false;
+        }
+        $postId = addslashes($postId);
+        $query = "delete from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $DB->write($query);
+    }
+
+    public function isMyPost($postId, $userId){
+        if (!is_numeric($postId)){
+            return false;
+        }
+        $postId = addslashes($postId);
+        $query = "select * from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+        if (is_array($result)){
+            if ($result[0]['user_id'] == $userId){
+                return true;
+            }
+        }
+        return false;
     }
 
     private function createPostId()

@@ -5,6 +5,7 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
         $userId = $_SESSION['showtime_userid'];
         $user = new User();
         $userData = $user->getUser($userId);
+        $USER = $userData;
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $userData = $user->getUser($_GET['id']);
         }
@@ -77,7 +78,7 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                 <br>
                 <div id="personName"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></div>
                 <br>
-                <div class="menuButtons"><a href="timeline.php" style="text-decoration: none;">Timeline</a></div>
+                <div class="menuButtons"><a href="index.php" style="text-decoration: none;">Timeline</a></div>
                 <div class="menuButtons">About</div> 
                 <div class="menuButtons">Friends</div>
                 <div class="menuButtons">Photos</div>
