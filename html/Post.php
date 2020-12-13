@@ -71,6 +71,32 @@ class Post
         }
     }
 
+    public function getPostById($postId)
+    {
+        $postId = addslashes($postId);
+        $query = "select * from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+
+        if ($result) {
+            return $result[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function deletePost($postId){
+        if (!is_numeric($postId)){
+            return false;
+        }
+        $postId = addslashes($postId);
+        $query = "delete from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $DB->read($query);
+    }
+
     private function createPostId()
     {
         $length = rand(4, 11);
