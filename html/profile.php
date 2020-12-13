@@ -77,7 +77,7 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                 <br>
                 <div id="personName"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></div>
                 <br>
-                <div class="menuButtons">Timeline</div> 
+                <div class="menuButtons"><a href="timeline.php" style="text-decoration: none;">Timeline</a></div>
                 <div class="menuButtons">About</div> 
                 <div class="menuButtons">Friends</div>
                 <div class="menuButtons">Photos</div>
