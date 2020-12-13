@@ -94,7 +94,24 @@ class Post
         $query = "delete from posts where post_id = '$postId' limit 1";
 
         $DB = new Connection();
-        $DB->read($query);
+        $DB->write($query);
+    }
+
+    public function isMyPost($postId, $userId){
+        if (!is_numeric($postId)){
+            return false;
+        }
+        $postId = addslashes($postId);
+        $query = "select * from posts where post_id = '$postId' limit 1";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+        if (is_array($result)){
+            if ($result[0]['user_id'] == $userId){
+                return true;
+            }
+        }
+        return false;
     }
 
     private function createPostId()

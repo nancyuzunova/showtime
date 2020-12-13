@@ -44,9 +44,14 @@
         <a href="">Like</a> . <a href="">Comment</a> .
         <span style="color: #999;"><?php echo htmlspecialchars($row['date']); ?></span>
         <span style="color: #999; float: right">
-            <a href="edit.php">Edit</a> .
-            <a href="delete.php?id=<?php echo $row['post_id'] ?>">Delete</a>
-
+            <?php
+                $post = new Post();
+                if ($post->isMyPost($row['post_id'], $_SESSION['showtime_userid'])) {
+                    echo "
+                        <a href='edit.php'>Edit</a> .
+                        <a href='delete.php?id=$row[post_id]'>Delete</a>";
+                }
+            ?>
         </span>
     </div>
 </div>
