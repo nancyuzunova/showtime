@@ -114,6 +114,38 @@ class Post
         return false;
     }
 
+    public function likePost($postId, $type, $userId){
+        $DB = new Connection();
+        if ($type == "post"){
+            //increment the posts table
+            $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
+            $DB -> write($query);
+
+            //save likes details
+            $query = "select likes from likes where type = 'post' && content_id = '$postId' limit 1";
+            $result = $DB -> read($query);
+            if (is_array($result)){
+                $likes = json_decode($result[0]['likes'], true);
+                $userIds = array_column($likes, "user_id");
+                if (!in_array($userId, $userIds)){
+                    $arr["user_id"] = $userId;
+                    $arr["date"] = date("Y-m-d H:i:s");
+                    $likes[] = $arr;
+                    $likes = json_encode($likes);
+                    $query = "update likes set likes = '$likes' where type = 'post' && content_id = '$postId' limit 1";
+                    $DB -> write($query);
+                }
+            } else {
+                $arr["user_id"] = $userId;
+                $arr["date"] = date("Y-m-d H:i:s");
+                $arr2[] = $arr;
+                $likes = json_encode($arr2);
+                $query = "insert into likes (type, content_id, likes) values ('$type', '$postId', '$likes')";
+                $DB -> write($query);
+            }
+        }
+    }
+
     private function createPostId()
     {
         $length = rand(4, 11);
