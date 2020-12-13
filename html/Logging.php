@@ -15,7 +15,7 @@ class Logging
 
         if ($result){
             $user = $result[0];
-            if ($password == $user['password']){
+            if ($this->hashText($password) == $user['password']){
                 //create a session data
                 $_SESSION['showtime_userid'] = $user['user_id'];
             } else {
@@ -25,6 +25,11 @@ class Logging
             $this->error .= "No such email was found!<br>";
         }
         return $this->error;
+    }
+
+    private function hashText($text){
+        $text = hash("sha1", $text);
+        return $text;
     }
 
     public function checkLogin($id){
