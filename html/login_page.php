@@ -57,6 +57,8 @@
                             <label for="male">Мъж</label><br>
                             <input type="radio" id="female" name="gender" value="female">
                             <label for="female">Жена</label><br>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="female">Друг</label><br>
                         </div>
 
                         <input type="submit" class="btn" value="Регистрация" />
