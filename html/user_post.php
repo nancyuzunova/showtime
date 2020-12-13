@@ -14,7 +14,7 @@
     <div style="width: 100%">
         <div style="font-weight: bold; color: #405b9d;">
             <?php
-            echo $row_user['first_name'] . " " . $row_user['last_name'];
+            echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
             if ($row['is_profile_image']) {
                 $pronoun = "his";
                 if ($row_user['gender'] == "Female") {
@@ -31,7 +31,7 @@
             }
             ?>
         </div>
-        <?php echo $row['post']; ?>
+        <?php echo htmlspecialchars($row['post']); ?>
         <br><br>
         <?php
         if (file_exists($row['image'])) {
@@ -42,7 +42,7 @@
         ?>
         <br><br>
         <a href="">Like</a> . <a href="">Comment</a> .
-        <span style="color: #999;"><?php echo $row['date']; ?></span>
+        <span style="color: #999;"><?php echo htmlspecialchars($row['date']); ?></span>
         <span style="color: #999; float: right">Edit . Delete</span>
     </div>
 </div>
