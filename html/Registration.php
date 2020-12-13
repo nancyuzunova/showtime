@@ -47,7 +47,7 @@ class Registration{
         $first_name = ucfirst($data['first_name']);
         $last_name = ucfirst($data['last_name']);
         $email = $data['email'];
-        $password = $data['password'];
+        $password = $this->hashText($data['password']);
         $gender = $data['gender'];
         $url = strtolower($first_name) .  "." . strtolower($last_name);
         
@@ -62,6 +62,11 @@ class Registration{
         } else {
             $this->error = "Invalid input!";
         }
+    }
+
+    private function hashText($text){
+        $text = hash("sha1", $text);
+        return $text;
     }
 
     private function create_userid(){
