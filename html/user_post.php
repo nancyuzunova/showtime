@@ -57,5 +57,41 @@
                 }
             ?>
         </span>
+        <?php
+            $iLiked = false;
+            if(isset($_SESSION['showtime_userid'])){
+                $userId = $_SESSION['showtime_userid'];
+                $DB = new Connection();
+                $query = "select likes from likes where type = 'post' && content_id = '$row[post_id]' limit 1";
+                $result = $DB->read($query);
+                if (is_array($result)){
+                    $likes = json_decode($result[0]['likes'], true);
+                    $userIds = array_column($likes, "user_id");
+                    if (in_array($userId, $userIds)) {
+                        $iLiked = true;
+                    }
+                }
+            }
+            if($row['likes']>0){
+                echo "<br>";
+                if($row['likes'] == 1){
+                    if($iLiked){
+                        echo "<div style='text-align: left;'> You liked this post </div>";
+                    }else{
+                        echo "<div style='text-align: left;'> One person liked this post </div>";
+                    }
+                }else{
+                    if($iLiked){
+                        $text = "others";
+                        if($row['likes']-1 == 1){
+                            $text = "other";
+                        }
+                        echo "<div style='text-align: left;'>You and " . ($row['likes'] - 1) . " " . $text ." liked this post </div>";
+                    }else{
+                        echo "<div style='text-align: left;'>" . $row['likes'] . " other liked this post </div>";
+                    }
+                }
+            }
+        ?>
     </div>
 </div>
