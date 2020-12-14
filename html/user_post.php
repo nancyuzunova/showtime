@@ -52,7 +52,7 @@
                 $post = new Post();
                 if ($post->isMyPost($row['post_id'], $_SESSION['showtime_userid'])) {
                     echo "
-                        <a href='edit.php'>Edit</a> .
+                        <a href='edit.php?id=$row[post_id]'>Edit</a> .
                         <a href='delete.php?id=$row[post_id]'>Delete</a>";
                 }
             ?>

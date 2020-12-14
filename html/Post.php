@@ -56,6 +56,48 @@ class Post
         return $this->error;
     }
 
+    public function editPost( $data, $files)
+    {
+        if (!empty($data['post']) || !empty($files['file']['name'])) {
+            $image = "";
+            $hasImage = 0;
+
+            if(!empty($files['file']['name'])) {
+                $folder = "../uploads/" . $userId . "/";
+                    if (!file_exists($folder)) {
+                        mkdir($folder, 0777, true);
+                        file_put_contents($folder . "index.php", "");
+                    }
+
+                    $editor = new ImageEditor();
+                    $image = $folder . $_FILES['file']['name'] . date("Y-m-d H-i-s") . ".jpg";
+                    move_uploaded_file($_FILES['file']['tmp_name'], $image);
+                    $editor->resizeImage($image, $image, 1500, 1500);
+                    $hasImage = 1;
+                }
+
+            $post = "";
+            if (isset($data['post'])){
+                $post = addslashes($data['post']);
+            }
+            $postId = addslashes($data['postId']);
+
+            if($hasImage){
+                $query = "update posts set post = '$post', image = '$image' where post_id = '$postId' limit 1";
+            }else{
+                $query = "update posts set post = '$post' where post_id = '$postId' limit 1";
+            }
+
+            $DB = new Connection();
+            $DB->write($query);
+
+        } else {
+            $this->error .= "Please type something first!<br>";
+        }
+
+        return $this->error;
+    }
+
     public function getPosts($user_id)
     {
         $user_id = addslashes($user_id);
