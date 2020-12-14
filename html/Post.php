@@ -117,9 +117,6 @@ class Post
     public function likePost($postId, $type, $userId){
         $DB = new Connection();
         if ($type == "post"){
-            //increment the posts table
-            $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
-            $DB -> write($query);
 
             //save likes details
             $query = "select likes from likes where type = 'post' && content_id = '$postId' limit 1";
@@ -134,6 +131,18 @@ class Post
                     $likes = json_encode($likes);
                     $query = "update likes set likes = '$likes' where type = 'post' && content_id = '$postId' limit 1";
                     $DB -> write($query);
+                    //increment the posts table
+                    $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
+                    $DB -> write($query);
+                }else{
+                    $key = array_search($userId, $userIds);
+                    unset($likes[$key]);
+                    $likes = json_encode($likes);
+                    $query = "update likes set likes = '$likes' where type = 'post' && content_id = '$postId' limit 1";
+                    $DB -> write($query);
+                    //decrement the posts table
+                    $query = "update posts set likes = likes - 1 where post_id = '$postId' limit 1";
+                    $DB -> write($query);
                 }
             } else {
                 $arr["user_id"] = $userId;
@@ -141,6 +150,9 @@ class Post
                 $arr2[] = $arr;
                 $likes = json_encode($arr2);
                 $query = "insert into likes (type, content_id, likes) values ('$type', '$postId', '$likes')";
+                $DB -> write($query);
+                //increment the posts table
+                $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
                 $DB -> write($query);
             }
         }
