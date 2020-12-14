@@ -74,6 +74,7 @@
             }
             if($row['likes']>0){
                 echo "<br>";
+                echo "<a style='text-decoration: none;' href='likes.php?type=post&id=$row[post_id]'>";
                 if($row['likes'] == 1){
                     if($iLiked){
                         echo "<div style='text-align: left;'> You liked this post </div>";
@@ -91,6 +92,8 @@
                         echo "<div style='text-align: left;'>" . $row['likes'] . " other liked this post </div>";
                     }
                 }
+
+                echo "</a>";
             }
         ?>
     </div>

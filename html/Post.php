@@ -114,6 +114,21 @@ class Post
         return false;
     }
 
+    public function getLikes($postId, $type){
+        $DB = new Connection();
+        if ($type == "post") {
+            //get like details
+            $query = "select likes from likes where type = 'post' && content_id = '$postId' limit 1";
+            $result = $DB->read($query);
+            if (is_array($result)) {
+                $likes = json_decode($result[0]['likes'], true);
+                return $likes;
+            }
+        }
+
+        return false;
+    }
+
     public function likePost($postId, $type, $userId){
         $DB = new Connection();
         if ($type == "post"){
