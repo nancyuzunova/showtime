@@ -158,9 +158,10 @@ class Post
 
     public function getLikes($postId, $type){
         $DB = new Connection();
-        if ($type == "post") {
+        $type = addslashes($type);
+        if (is_numeric($postId)){
             //get like details
-            $query = "select likes from likes where type = 'post' && content_id = '$postId' limit 1";
+            $query = "select likes from likes where type = '$type' && content_id = '$postId' limit 1";
             $result = $DB->read($query);
             if (is_array($result)) {
                 $likes = json_decode($result[0]['likes'], true);
