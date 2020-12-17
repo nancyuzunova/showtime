@@ -2,9 +2,13 @@
     include("loader.php");
 
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
-        $user_id = $_SESSION['showtime_userid'];
+        $userId = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->getUser($user_id);
+        $userData = $user->getUser($userId);
+        $USER = $userData;
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $userData = $user->getUser($_GET['id']);
+        }
     }else{
         header("Location: login_page.php");
         die;
@@ -47,9 +51,15 @@
                 <!--friends area-->
                 <div style="min-height: 400px; flex: 1;">
                     <div id="friendsBar" style="text-align: center; font-size: 20px; color: #405d9b; background-color: #d0d8e4">
-                        <img src="../images/user.jpg" style="width: 150px; border-radius: 50%; border: solid 2px white;">
+                        <?php
+                            $image = "../images/default-avatar.png";
+                            if (file_exists($userData['profile_image'])){
+                                $image = $editor->getThumbProfile($userData['profile_image']);
+                            }
+                        ?>
+                        <img style="width: 150px; border-radius: 50%; border: solid 2px white;" src="<?php echo $image?>">
                         <br>
-                        <a style="text-decoration: none;" href="profile.php"><?php echo $user_data['first_name'] . " " . $user_data['last_name'] ?></a>
+                        <a style="text-decoration: none;" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
                     </div>
                 </div>
 

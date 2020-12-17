@@ -63,12 +63,12 @@
                     }
                 ?>
                 <img src="<?php echo $cover?>" style="width:100%;">
-                <span style="font-size: 11px;">
+                <span style="font-size: 12px;">
                      <?php
-                     $image = "../images/default-avatar.png";
-                     if (file_exists($userData['profile_image'])){
-                         $image = $editor->getThumbProfile($userData['profile_image']);
-                     }
+                         $image = "../images/default-avatar.png";
+                         if (file_exists($userData['profile_image'])){
+                             $image = $editor->getThumbProfile($userData['profile_image']);
+                         }
                      ?>
                     <img id="profilePic" src="<?php echo $image?>">
                     <br>
