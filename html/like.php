@@ -24,7 +24,12 @@
             $allowed[] = 'comment';
             if (in_array($_GET['type'], $allowed)) {
                 $post = new Post();
+                $user = new User();
                 $post->likePost($_GET['id'], $_GET['type'], $_SESSION['showtime_userid']);
+
+                if($_GET['type'] == "user"){
+                    $user->followUser($_GET['id'], $_GET['type'], $_SESSION['showtime_userid']);
+                }
             }
         }
     }

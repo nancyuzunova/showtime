@@ -91,7 +91,7 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                 <a href="index.php" style="text-decoration: none;"><div class="menuButtons">Timeline</div></a>
                 <a href="profile.php?section=abouts&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">About</div></a>
                 <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Followers</div></a>
-                <a href="profile.php?section=pfollowing&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Following</div></a>
+                <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Following</div></a>
                 <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Photos</div></a>
                 <a href="profile.php?section=settings" style="text-decoration: none;"><div class="menuButtons">Settings</div></a>
             </div>
@@ -106,6 +106,8 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                     include("profile_default.php");
                 }elseif($section == "followers"){
                     include("profile_followers.php");
+                }elseif($section == "following"){
+                    include("profile_following.php");
                 }elseif($section == "photos"){
                     include("profile_photos.php");
                 }
