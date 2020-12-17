@@ -57,10 +57,10 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
         <div id="profileMainDiv">
             <div id="mainDivBackground">
                 <?php
-                $cover = "../images/sea.jpg";
-                if (file_exists($userData['cover_image'])){
-                    $cover = $editor->getThumbCover($userData['cover_image']);
-                }
+                    $cover = "../images/sea.jpg";
+                    if (file_exists($userData['cover_image'])){
+                        $cover = $editor->getThumbCover($userData['cover_image']);
+                    }
                 ?>
                 <img src="<?php echo $cover?>" style="width:100%;">
                 <span style="font-size: 11px;">
@@ -81,6 +81,12 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                         <?php echo $userData['first_name'] . " " . $userData['last_name'] ?>
                     </a>
                 </div>
+
+                <br>
+                <a href="like.php?type=user&id=<?php echo $userData['user_id'] ?>">
+                    <input id="postButton" type="button" value="Follow <?php echo $userData['likes']?>" style="margin-right: 30px; background-color: #04befe; width: 100px;">
+                </a>
+                <br>
                 <br>
                 <a href="index.php" style="text-decoration: none;"><div class="menuButtons">Timeline</div></a>
                 <a href="profile.php?section=following" style="text-decoration: none;"><div class="menuButtons">Friends</div></a>

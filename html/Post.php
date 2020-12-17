@@ -173,45 +173,43 @@ class Post
 
     public function likePost($postId, $type, $userId){
         $DB = new Connection();
-        if ($type == "post"){
 
-            //save likes details
-            $query = "select likes from likes where type = 'post' && content_id = '$postId' limit 1";
-            $result = $DB -> read($query);
-            if (is_array($result)){
-                $likes = json_decode($result[0]['likes'], true);
-                $userIds = array_column($likes, "user_id");
-                if (!in_array($userId, $userIds)){
-                    $arr["user_id"] = $userId;
-                    $arr["date"] = date("Y-m-d H:i:s");
-                    $likes[] = $arr;
-                    $likes = json_encode($likes);
-                    $query = "update likes set likes = '$likes' where type = 'post' && content_id = '$postId' limit 1";
-                    $DB -> write($query);
-                    //increment the posts table
-                    $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
-                    $DB -> write($query);
-                }else{
-                    $key = array_search($userId, $userIds);
-                    unset($likes[$key]);
-                    $likes = json_encode($likes);
-                    $query = "update likes set likes = '$likes' where type = 'post' && content_id = '$postId' limit 1";
-                    $DB -> write($query);
-                    //decrement the posts table
-                    $query = "update posts set likes = likes - 1 where post_id = '$postId' limit 1";
-                    $DB -> write($query);
-                }
-            } else {
+        //save likes details
+        $query = "select likes from likes where type = '$type' && content_id = '$postId' limit 1";
+        $result = $DB -> read($query);
+        if (is_array($result)){
+            $likes = json_decode($result[0]['likes'], true);
+            $userIds = array_column($likes, "user_id");
+            if (!in_array($userId, $userIds)){
                 $arr["user_id"] = $userId;
                 $arr["date"] = date("Y-m-d H:i:s");
-                $arr2[] = $arr;
-                $likes = json_encode($arr2);
-                $query = "insert into likes (type, content_id, likes) values ('$type', '$postId', '$likes')";
+                $likes[] = $arr;
+                $likes = json_encode($likes);
+                $query = "update likes set likes = '$likes' where type = '$type' && content_id = '$postId' limit 1";
                 $DB -> write($query);
                 //increment the posts table
-                $query = "update posts set likes = likes + 1 where post_id = '$postId' limit 1";
+                $query = "update {$type}s set likes = likes + 1 where {$type}_id = '$postId' limit 1";
+                $DB -> write($query);
+            }else{
+                $key = array_search($userId, $userIds);
+                unset($likes[$key]);
+                $likes = json_encode($likes);
+                $query = "update likes set likes = '$likes' where type = '$type' && content_id = '$postId' limit 1";
+                $DB -> write($query);
+                //decrement the posts table
+                $query = "update {$type}s set likes = likes - 1 where {$type}_id = '$postId' limit 1";
                 $DB -> write($query);
             }
+        } else {
+            $arr["user_id"] = $userId;
+            $arr["date"] = date("Y-m-d H:i:s");
+            $arr2[] = $arr;
+            $likes = json_encode($arr2);
+            $query = "insert into likes (type, content_id, likes) values ('$type', '$postId', '$likes')";
+            $DB -> write($query);
+            //increment the right table
+            $query = "update {$type}s set likes = likes + 1 where {$type}_id = '$postId' limit 1";
+            $DB -> write($query);
         }
     }
 
