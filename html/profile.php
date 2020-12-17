@@ -76,60 +76,29 @@ if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'
                     <a style="text-decoration: none;" href="change_profile_picture.php?change=cover">Change cover</a>
                 </span>
                 <br>
-                <div id="personName"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></div>
+                <div id="personName">
+                    <a href="profile.php?id=<?php echo $userData['user_id'] ?>">
+                        <?php echo $userData['first_name'] . " " . $userData['last_name'] ?>
+                    </a>
+                </div>
                 <br>
-                <div class="menuButtons"><a href="index.php" style="text-decoration: none;">Timeline</a></div>
-                <div class="menuButtons">About</div> 
-                <div class="menuButtons">Friends</div>
-                <div class="menuButtons">Photos</div>
-                <div class="menuButtons">Settings</div>
+                <a href="index.php" style="text-decoration: none;"><div class="menuButtons">Timeline</div></a>
+                <a href="profile.php?section=following" style="text-decoration: none;"><div class="menuButtons">Friends</div></a>
+                <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Photos</div></a>
             </div>
 
             <!-- below cover area-->
-            <div id="mainContain">
-
-                <!--friends area-->
-                <div style="min-height: 400px; flex: 1;">
-                    <div id="friendsBar">
-                        Friends<br>
-                        <?php
-                        if($friends){
-                            foreach ($friends as $friend_row){
-                                include("friend.php");
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-
-                <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                        <form method="post" enctype="multipart/form-data">
-                            <textarea name="post" placeholder="whats on your mind?"></textarea>
-                            <input type="file" name="file">
-                            <input id="postButton" type="submit" value="post">
-                            <br>
-                        </form>
-                    </div>
-
-                    <!--Posts-->
-                    <div id="postsBar">
-                        <?php
-                            if($posts){
-                                foreach ($posts as $row){
-                                    $user = new User();
-                                    $row_user = $user->getUser($row['user_id']);
-                                    include("user_post.php");
-                                }
-                            }
-                        ?>
-                    </div>
-
-
-
-                </div>
-            </div>
+            <?php
+                $section = "default";
+                if(isset($_GET['section'])){
+                    $section = $_GET['section'];
+                }
+                if($section == "default"){
+                    include("profile_default.php");
+                }elseif($section == "photos"){
+                    include("profile_photos.php");
+                }
+            ?>
 
         </div>
 
