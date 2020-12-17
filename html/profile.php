@@ -1,7 +1,7 @@
 <?php
     include("loader.php");
 
-if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
+    if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
         $userId = $_SESSION['showtime_userid'];
         $user = new User();
         $userData = $user->getUser($userId);

@@ -13,7 +13,7 @@
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $post = new Post();
         $user_id = $_SESSION['showtime_userid'];
-        $result = $post->createPost($user_id,$_POST);
+        $result = $post->createPost($user_id,$_POST, $_FILES);
 
         if($result == ""){
             header("Location: profile.php");
@@ -56,46 +56,42 @@
                 <!--post area-->
                 <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                        <textarea placeholder="whats on your mind?"></textarea>
-                        <input id="postButton" type="submit" value="post">
+                        <form method="post" enctype="multipart/form-data">
+                            <textarea name="post" placeholder="whats on your mind?"></textarea>
+                            <input type="file" name="file">
+                            <input id="postButton" type="submit" value="post">
+                            <br>
+                        </form>
                         <br>
                     </div>
 
                     <!--Posts-->
                     <div id="postsBar">
-                    <div id="post">
-                            <div>
-                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
-                            </div>
-                            <div>
-                                <div style="font-weight: bold; color: #405b9d;">First Guy</div>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                <br><br>
-                                <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">December 7 2020</span>
-                            </div>
-                        </div>
-                        <div id="post">
-                            <div>
-                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
-                            </div>
-                            <div>
-                                <div style="font-weight: bold; color: #405b9d;">First Guy</div>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                <br><br>
-                                <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">December 7 2020</span>
-                            </div>
-                        </div>
-                        <div id="post">
-                            <div>
-                                <img src="../images/user1.jpg" style="width: 75px; margin-right: 4px;">
-                            </div>
-                            <div>
-                                <div style="font-weight: bold; color: #405b9d;">First Guy</div>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                <br><br>
-                                <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">December 7 2020</span>
-                            </div>
-                        </div>
+                        <?php
+                            $DB = new Connection();
+                            $user = new User();
+                            $editor = new ImageEditor();
+                            $followers = $user->getFollowing($_SESSION['showtime_userid'], "user");
+
+                            $followersIds = false;
+                            if(is_array($followers)){
+                                $followersIds = array_column($followers, "user_id");
+                                $followersIds = implode("','", $followersIds);
+                            }
+
+                            if($followersIds){
+                                $query = "select * from posts where user_id in('" . $followersIds . "') order by id desc limit 30";
+                                $posts = $DB->read($query);
+                            }
+
+                            if($posts){
+                                foreach ($posts as $row){
+                                    $user = new User();
+                                    $row_user = $user->getUser($row['user_id']);
+                                    include("user_post.php");
+                                }
+                            }
+                        ?>
                     </div>
 
 
