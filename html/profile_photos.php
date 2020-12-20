@@ -7,7 +7,9 @@
 
             if(is_array($images)){
                 foreach ($images as $imageRow) {
+                    echo "<a href='singlePost.php?id=$imageRow[post_id]'>";
                     echo"<img src='$imageRow[image]' style='width: 150px; margin: 10px;'>";
+                    echo "</a>";
                 }
 
             }else{
