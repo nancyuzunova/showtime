@@ -11,6 +11,10 @@
         die;
     }
 
+    if (isset($_SERVER['HTTP_REFERER']) && !strstr($_SERVER['HTTP_REFERER'], "delete.php")) {
+        $_SESSION['returnTo'] = $_SERVER['HTTP_REFERER'];
+    }
+
     $error = "";
     $post = new Post();
     if (isset($_GET['id']) && is_numeric($_GET['id'])){
@@ -29,7 +33,7 @@
     //if something was posted
     if ($_SERVER['REQUEST_METHOD'] == "POST"){
         $post->deletePost($_POST['postId']);
-        header("Location: profile.php");
+        header("Location: " . $_SESSION['returnTo']);
         die;
     }
 ?>

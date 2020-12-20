@@ -42,10 +42,18 @@ class Post
             if (isset($data['post'])){
                 $post = addslashes($data['post']);
             }
+
             $postId = $this->createPostId();
-            $parent = $data['parent'];
-            
+            $parent = 0;
             $DB = new Connection();
+
+            if(isset($data['parent']) && is_numeric($data['parent'])){
+                $parent = $data['parent'];
+
+                $query = "update posts set comments = comments + 1 where post_id = '$parent' limit 1";
+                $DB->write($query);
+            }
+
             $query = "insert into posts (user_id, post_id, post, image, has_image, is_profile_image, is_cover_image, parent) values ('$userId', '$postId', '$post', '$image', '$hasImage', '$isProfileImage', '$isCoverImage', '$parent')";
             $DB->write($query);
 
@@ -148,10 +156,21 @@ class Post
         if (!is_numeric($postId)){
             return false;
         }
-        $postId = addslashes($postId);
-        $query = "delete from posts where post_id = '$postId' limit 1";
 
+        $postId = addslashes($postId);
         $DB = new Connection();
+        $query = "select parent from posts where post_id = '$postId' limit 1";
+        $result = $DB->read($query);
+
+        if(is_array($result)) {
+            if ($result[0]['parent'] > 0) {
+                $parent = $result[0]['parent'];
+                $query = "update posts set comments = comments - 1 where post_id = '$parent' limit 1";
+                $DB->write($query);
+            }
+        }
+
+        $query = "delete from posts where post_id = '$postId' limit 1";
         $DB->write($query);
     }
 

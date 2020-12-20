@@ -48,7 +48,13 @@
 
         ?>
         <a href="like.php?type=post&id=<?php echo $row['post_id'];?>">Like<?php echo $likes?></a> .
-        <a href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment</a> .
+        <?php
+            $comments = "";
+            if($row['comments'] > 0){
+                $comments = "(" . $row['comments'] . ")";
+            }
+        ?>
+        <a href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment<?php echo $comments ?></a> .
         <span style="color: #999;"><?php echo htmlspecialchars($row['date']); ?></span>
         <span style="color: #999; float: right">
             <?php
