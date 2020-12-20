@@ -16,6 +16,8 @@
 
     //posting starts here
     if($_SERVER['REQUEST_METHOD'] == "POST"){
+        include("changeImage.php");
+        
         if(isset($_POST['firstName'])){
             $settings = new Settings();
             $settings->saveSettings($_POST, $_SESSION['showtime_userid']);
@@ -59,6 +61,45 @@
 
     <body>
         <?php include("header.php") ?>
+
+        <!--Change profile image-->
+        <div id="changeProfileImage" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb;">
+            <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
+                <form method="post" action="profile.php?change=profile" enctype="multipart/form-data">
+                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                        <input type="file" name="file">
+                        <input id="postButton" style="width: 120px;" type="submit" value="Change" style="width: 100px;">
+                        <br>
+                        <div style="text-align: center;">
+                            <br><br>
+                            <?php
+                                echo "<img src='$userData[profile_image]' style='max-width: 500px;'>";
+                            ?>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--Change cover image-->
+        <div id="changeCoverImage" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb;">
+            <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
+                <form method="post" action="profile.php?change=cover" enctype="multipart/form-data">
+                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                        <input type="file" name="file">
+                        <input id="postButton" style="width: 120px;" type="submit" value="Change" style="width: 100px;">
+                        <br>
+                        <div style="text-align: center;">
+                            <br><br>
+                            <?php
+                                echo "<img src='$userData[cover_image]' style='max-width: 500px;'>";
+                            ?>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <!--Cover area-->
         <div id="profileMainDiv">
             <div id="mainDivBackground">
@@ -78,8 +119,8 @@
                      ?>
                     <img id="profilePic" src="<?php echo $image?>">
                     <br>
-                    <a style="text-decoration: none;" href="change_profile_picture.php?change=profile">Change profile picture</a> |
-                    <a style="text-decoration: none;" href="change_profile_picture.php?change=cover">Change cover</a>
+                    <a onclick="showChangeProfile(event)" style="text-decoration: none;" href="change_profile_picture.php?change=profile">Change profile picture</a> |
+                    <a onclick="showChangeCover(event)"style="text-decoration: none;" href="change_profile_picture.php?change=cover">Change cover</a>
                 </span>
                 <br>
                 <div id="personName">
@@ -132,3 +173,34 @@
     </body>
 
 </html>
+
+<script type="text/javascript">
+    function showChangeProfile(event){
+        event.preventDefault();
+        var profileImage = document.getElementById("changeProfileImage");
+        profileImage.style.display = "block";
+    }
+
+    function hideChangeProfile(){
+        var profileImage = document.getElementById("changeProfileImage");
+        profileImage.style.display = "none";
+    }
+
+    function showChangeCover(event){
+        event.preventDefault();
+        var coverImage = document.getElementById("changeCoverImage");
+        coverImage.style.display = "block";
+    }
+
+    function hideChangeCover(){
+        var coverImage = document.getElementById("changeCoverImage");
+        coverImage.style.display = "none";
+    }
+
+    window.onkeydown = function (key){
+        if(key.keyCode == 27){
+            hideChangeProfile();
+            hideChangeCover();
+        }
+    }
+</script>
