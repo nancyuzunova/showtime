@@ -17,7 +17,7 @@
     //posting starts here
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         include("changeImage.php");
-        
+
         if(isset($_POST['firstName'])){
             $settings = new Settings();
             $settings->saveSettings($_POST, $_SESSION['showtime_userid']);
