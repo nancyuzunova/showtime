@@ -11,6 +11,23 @@
         die;
     }
 
+    //posting starts here
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $post = new Post();
+        $userId = $_SESSION['showtime_userid'];
+        $result = $post->createPost($userId, $_POST, $_FILES);
+
+        if ($result == "") {
+            header("Location: singlePost.php?id=$_GET[id]");
+            die;
+        } else {
+            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
+            echo "<br>The following errors occurred:<br><br>";
+            echo $result;
+            echo "</div>";
+        }
+    }
+
     $error = "";
     $row = false;
     $post = new Post();
@@ -49,6 +66,23 @@
                             }
                         ?>
                         <br style="clear: both;">
+                        <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                            <form method="post" enctype="multipart/form-data">
+                                <textarea name="post" placeholder="Your comment here."></textarea>
+                                <input type="hidden" name="parent" value="<?php echo $row['post_id'] ?>">
+                                <input type="file" name="file">
+                                <input id="postButton" type="submit" value="post">
+                                <br>
+                            </form>
+                        </div>
+                        <?php
+                            $comments = $post->getComments($row['post_id']);
+                            if(is_array($comments)){
+                                foreach($comments as $comment){
+                                    include("comment.php");
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

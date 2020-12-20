@@ -14,6 +14,7 @@
         die;
     }
 
+    //posting starts here
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(isset($_POST['firstName'])){
             $settings = new Settings();

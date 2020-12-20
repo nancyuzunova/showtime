@@ -42,11 +42,11 @@ class Post
             if (isset($data['post'])){
                 $post = addslashes($data['post']);
             }
-            $post_id = $this->createPostId();
-
-            $query = "insert into posts (user_id, post_id, post, image, has_image, is_profile_image, is_cover_image) values ('$userId', '$post_id', '$post', '$image', '$hasImage', '$isProfileImage', '$isCoverImage')";
-
+            $postId = $this->createPostId();
+            $parent = $data['parent'];
+            
             $DB = new Connection();
+            $query = "insert into posts (user_id, post_id, post, image, has_image, is_profile_image, is_cover_image, parent) values ('$userId', '$postId', '$post', '$image', '$hasImage', '$isProfileImage', '$isCoverImage', '$parent')";
             $DB->write($query);
 
         } else {
@@ -98,10 +98,10 @@ class Post
         return $this->error;
     }
 
-    public function getPosts($user_id)
+    public function getPosts($userId)
     {
-        $user_id = addslashes($user_id);
-        $query = "select * from posts where user_id = '$user_id' order by id desc limit 10";
+        $userId = addslashes($userId);
+        $query = "select * from posts where user_id = '$userId' order by id desc limit 10";
 
         $DB = new Connection();
         $result = $DB->read($query);
@@ -112,6 +112,22 @@ class Post
             return false;
         }
     }
+
+    public function getComments($id)
+    {
+        $id = addslashes($id);
+        $query = "select * from posts where parent = '$id' order by id asc limit 10";
+
+        $DB = new Connection();
+        $result = $DB->read($query);
+
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
+
 
     public function getPostById($postId)
     {
