@@ -94,7 +94,7 @@
                 <br>
                 <br>
                 <a href="index.php" style="text-decoration: none;"><div class="menuButtons">Timeline</div></a>
-                <a href="profile.php?section=abouts&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">About</div></a>
+                <a href="profile.php?section=about&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">About</div></a>
                 <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Followers</div></a>
                 <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Following</div></a>
                 <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Photos</div></a>
