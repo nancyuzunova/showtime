@@ -15,18 +15,23 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $post = new Post();
-        $userId = $_SESSION['showtime_userid'];
-        $result = $post->createPost($userId,$_POST, $_FILES);
+        if(isset($_POST['firstName'])){
+            $settings = new Settings();
+            $settings->saveSettings($_POST, $_SESSION['showtime_userid']);
+        }else {
+            $post = new Post();
+            $userId = $_SESSION['showtime_userid'];
+            $result = $post->createPost($userId, $_POST, $_FILES);
 
-        if($result == ""){
-            header("Location: profile.php");
-            die;
-        }else{
-            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
-            echo "<br>The following errors occurred:<br><br>";
-            echo $result;
-            echo "</div>";
+            if ($result == "") {
+                header("Location: profile.php");
+                die;
+            } else {
+                echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
+                echo "<br>The following errors occurred:<br><br>";
+                echo $result;
+                echo "</div>";
+            }
         }
     }
     //Collect user id
@@ -93,7 +98,11 @@
                 <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Followers</div></a>
                 <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Following</div></a>
                 <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Photos</div></a>
-                <a href="profile.php?section=settings" style="text-decoration: none;"><div class="menuButtons">Settings</div></a>
+                <?php
+                    if($userData['user_id'] == $_SESSION['showtime_userid']) {
+                        echo '<a href="profile.php?section=settings&id=' . $userData['user_id'] . '" style="text-decoration: none;"><div class="menuButtons">Settings</div></a>';
+                    }
+                ?>
             </div>
 
             <!-- below cover area-->
@@ -110,6 +119,10 @@
                     include("profile_following.php");
                 }elseif($section == "photos"){
                     include("profile_photos.php");
+                }elseif($section == "about"){
+                    include("profile_about.php");
+                }elseif($section == "settings"){
+                    include("profile_settings.php");
                 }
             ?>
 
