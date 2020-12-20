@@ -94,7 +94,7 @@
                                 $posts = $DB->read($query);
                             }
 
-                            if($posts){
+                            if(isset($posts) && $posts){
                                 foreach ($posts as $row){
                                     $user = new User();
                                     $row_user = $user->getUser($row['user_id']);
