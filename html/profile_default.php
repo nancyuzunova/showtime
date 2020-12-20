@@ -3,10 +3,11 @@
     <!--friends area-->
     <div style="min-height: 400px; flex: 1;">
         <div id="friendsBar">
-            Friends<br>
+            Following<br>
             <?php
             if($friends){
-                foreach ($friends as $friend_row){
+                foreach ($friends as $friend){
+                    $friend_row = $user->getUser($friend['user_id']);
                     include("friend.php");
                 }
             }

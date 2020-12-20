@@ -109,7 +109,7 @@ class Post
     public function getPosts($userId)
     {
         $userId = addslashes($userId);
-        $query = "select * from posts where user_id = '$userId' order by id desc limit 10";
+        $query = "select * from posts where parent = 0 and user_id = '$userId' order by id desc limit 10";
 
         $DB = new Connection();
         $result = $DB->read($query);

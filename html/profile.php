@@ -44,7 +44,7 @@
 
     //Collect friends
     $user = new User();
-    $friends = $user->getFriends($userId);
+    $friends = $user->getFollowing($userData['user_id'], "user");
 
     $editor = new ImageEditor();
 ?>
