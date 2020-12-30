@@ -1,30 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body,
-input {
-  font-family: "Poppins", sans-serif;
+.container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-.container {
-  position: relative;
-  width: 100%;
-  background-color: #fff;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.forms-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+.forms-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .signin-signup {
@@ -36,7 +28,7 @@ input {
   transition: 1s 0.7s ease-in-out;
   display: grid;
   grid-template-columns: 1fr;
-  z-index: 5;
+    z-index: 5;
 }
 
 form {
@@ -61,6 +53,7 @@ form.sign-in-form {
 }
 
 .title {
+  font-family: 'Snell Roundhand', cursive;
   font-size: 2.2rem;
   color: #444;
   margin-bottom: 10px;
@@ -114,7 +107,7 @@ form.sign-in-form {
 
 .btn {
   width: 150px;
-  background-color: 	#a7194b;
+  background-color: #0392ce;
   border: none;
   outline: none;
   height: 49px;
@@ -148,7 +141,7 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, 	#a7194b 0%, 	#a7194b 100%);
+  background-image: linear-gradient(-45deg, 	#0392ce 0%, #0392ce 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;

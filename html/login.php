@@ -4,24 +4,27 @@
     include("Connection.php");
     include("Logging.php");
 
-    $email = "";
-    $password = "";
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $emailError = "";
+    $passwordError = "";
+
+    if(empty($email)){
+        $emailError = "Моля въведете вашия имейл!";
+    }
+    if(empty($password)){
+        $passwordError = "Моля въведете вашата парола!";
+    }
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $login = new Logging();
         $result = $login->login($_POST);
 
         if ($result != "") {
-            echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
-            echo "<br>The following errors occurred:<br><br>";
-            echo $result;
-            echo "</div>";
-            header("Location: login_page.php?error=true");
+            include("login_page.php");
         } else {
             header("Location: profile.php");
             die;
         }
-
-        $email = $_POST['email'];
-        $password = $_POST['password'];
     }

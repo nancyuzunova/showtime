@@ -19,10 +19,10 @@ class Logging
                 //create a session data
                 $_SESSION['showtime_userid'] = $user['user_id'];
             } else {
-                $this->error .= "Wrong password!<br>";
+                $this->error .= "Въведената парола е грешна!<br>";
             }
         } else {
-            $this->error .= "No such email was found!<br>";
+            $this->error .= "Не съществува потребител с такъв имейл!<br>";
         }
         return $this->error;
     }
