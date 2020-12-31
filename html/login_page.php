@@ -23,7 +23,7 @@
                             if(isset($emailError)){
                                 echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$emailError</div>";
                             }
-                            if(isset($result) && (strpos($result, 'имейл') !== false)){
+                            if(!isset($emailError) && isset($result) && (strpos($result, 'имейл') !== false)){
                                 echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$result</div>";
                             }
                         ?>
@@ -35,7 +35,7 @@
                             if(isset($passwordError)){
                                 echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$passwordError</div>";
                             }
-                            if(isset($result) && (strpos($result, 'парола') !== false)){
+                            if(!isset($passwordError) && isset($result) && (strpos($result, 'парола') !== false)){
                                 echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$result</div>";
                             }
                         ?>

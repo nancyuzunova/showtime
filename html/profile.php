@@ -55,6 +55,7 @@
 <html>
     <head>
         <title>Profile</title>
+        <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/profile.css">
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     </head>
@@ -102,44 +103,45 @@
 
         <!--Cover area-->
         <div id="profileMainDiv">
-            <div id="mainDivBackground">
+            <div id="topPart">
                 <?php
                     $cover = "../images/sea.jpg";
                     if (file_exists($userData['cover_image'])){
                         $cover = $editor->getThumbCover($userData['cover_image']);
                     }
                 ?>
-                <img src="<?php echo $cover?>" style="width:100%;">
-                <span style="font-size: 12px;">
-                     <?php
-                         $image = "../images/default-avatar.png";
-                         if (file_exists($userData['profile_image'])){
-                             $image = $editor->getThumbProfile($userData['profile_image']);
-                         }
-                     ?>
+                <img src="<?php echo $cover?>" id="coverImage">
+                <?php
+                    $image = "../images/default-avatar.png";
+                    if (file_exists($userData['profile_image'])){
+                        $image = $editor->getThumbProfile($userData['profile_image']);
+                    }
+                ?>
+                <div id="overCover">
+                    <a href="change_profile_picture.php?change=cover"><button id="changeCover" onclick="showChangeCover(event)">Промени корицата</button></a>
+                    <br>
                     <img id="profilePic" src="<?php echo $image?>">
                     <br>
-                    <a onclick="showChangeProfile(event)" style="text-decoration: none;" href="change_profile_picture.php?change=profile">Change profile picture</a> |
-                    <a onclick="showChangeCover(event)"style="text-decoration: none;" href="change_profile_picture.php?change=cover">Change cover</a>
-                </span>
-                <br>
-                <div id="personName">
-                    <a href="profile.php?id=<?php echo $userData['user_id'] ?>">
+                    <a href="change_profile_picture.php?change=profile"><button id="changeProfile" onclick="showChangeProfile(event)">Промени прoфилна</button></a>
+                </div>
+
+                <div>
+                    <a id="personName" href="profile.php?id=<?php echo $userData['user_id'] ?>">
                         <?php echo $userData['first_name'] . " " . $userData['last_name'] ?>
                     </a>
                 </div>
 
                 <br>
                 <a href="like.php?type=user&id=<?php echo $userData['user_id'] ?>">
-                    <input id="postButton" type="button" value="Follow <?php echo $userData['likes']?>" style="margin-right: 30px; background-color: #04befe; width: 100px;">
+                    <input id="postButton" type="button" value="Follow <?php echo $userData['likes']?>" style=" margin-right: 400px; background-color: #0392ce; width: 100px;">
                 </a>
                 <br>
                 <br>
                 <a href="index.php" style="text-decoration: none;"><div class="menuButtons">Timeline</div></a>
-                <a href="profile.php?section=about&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">About</div></a>
-                <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Followers</div></a>
-                <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Following</div></a>
-                <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none;"><div class="menuButtons">Photos</div></a>
+                <a href="profile.php?section=about&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none; color: #0392ce;"><div class="menuButtons">About</div></a>
+                <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none; color: #0392ce;"><div class="menuButtons">Followers</div></a>
+                <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none; color: #0392ce;"><div class="menuButtons">Following</div></a>
+                <a href="profile.php?section=photos&id=<?php echo $userData['user_id'] ?>" style="text-decoration: none; color: #0392ce;"><div class="menuButtons">Photos</div></a>
                 <?php
                     if($userData['user_id'] == $_SESSION['showtime_userid']) {
                         echo '<a href="profile.php?section=settings&id=' . $userData['user_id'] . '" style="text-decoration: none;"><div class="menuButtons">Settings</div></a>';

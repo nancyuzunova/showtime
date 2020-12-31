@@ -35,6 +35,7 @@
 <html>
     <head>
         <title>Timeline</title>
+        <link rel="stylesheet" href="../css/header.css">
         <link rel="stylesheet" href="../css/profile.css">
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     </head>
