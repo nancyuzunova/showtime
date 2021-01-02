@@ -10,27 +10,41 @@ class Registration{
         foreach($data as $key => $value){
             $value = trim($value);
             if(empty($value)){
-                $this->error = $this->error . $key . " is empty!<br>";
+                if($key == "firstName") {
+                    $this->error = $this->error . "Моля въведете вашето име!<br>";
+                }
+                if($key == "lastName") {
+                    $this->error = $this->error . "Моля въведете вашата фамилия!<br>";
+                }
+                if($key == "password") {
+                    $this->error = $this->error . "Моля въведете парола!<br>";
+                }
+                if($key == "password1") {
+                    $this->error = $this->error . "Моля повторете вашата парола!<br>";
+                }
+                if($key == "email") {
+                    $this->error = $this->error . "Моля въведете вашеия имейл!<br>";
+                }
             }
             if ($key == "email"){
                 if (!preg_match(self::EMAIL_PATTERN, $value)){
-                    $this->error = $this->error . "Invalid email address!<br>";
+                    $this->error = $this->error . "Невалиден имейл адрес!<br>";
                 }
             }
-            if ($key == "first_name"){
+            if ($key == "firstName"){
                 if (is_numeric($value)){
-                    $this->error = $this->error . "First name can't be a number!<br>";
+                    $this->error = $this->error . "Вашето име не може да съдържа цифри!<br>";
                 }
                 if (strstr($value, " ")){
-                    $this->error = $this->error . "First name can't have spaces!<br>";
+                    $this->error = $this->error . "Вашето име не може да съдържа празни пространства!<br>";
                 }
             }
-            if ($key == "last_name"){
+            if ($key == "lastName"){
                 if (is_numeric($value)){
-                    $this->error = $this->error . "Last name can't be a number!<br>";
+                    $this->error = $this->error . "Вашата фамилия не може да съдържа цифри!<br>";
                 }
                 if (strstr($value, " ")){
-                    $this->error = $this->error . "Last name can't have spaces!<br>";
+                    $this->error = $this->error . "Вашата фамилия не може да съдържа празни пространства!<br>";
                 }
             }
         }
@@ -43,22 +57,22 @@ class Registration{
     }
 
     public function create_user($data){
-        $user_id = $this->create_userid();
-        $first_name = ucfirst($data['first_name']);
-        $last_name = ucfirst($data['last_name']);
+        $userId = $this->create_userid();
+        $firstName = ucfirst($data['firstName']);
+        $lastName = ucfirst($data['lastName']);
         $email = $data['email'];
         $password = $this->hashText($data['password']);
         $gender = $data['gender'];
-        $url = strtolower($first_name) .  "." . strtolower($last_name);
+        $url = strtolower($firstName) .  "." . strtolower($lastName);
         
         $query = "insert into 
                     users (user_id, first_name, last_name, email, password, gender, url) 
-                    values ('$user_id', '$first_name' , '$last_name' , '$email' , '$password' , '$gender' , '$url')";
+                    values ('$userId', '$firstName' , '$lastName' , '$email' , '$password' , '$gender' , '$url')";
         
         $DB = new Connection();
         $result = $DB->write($query);
         if ($result){
-            $_SESSION['showtime_userid'] = $user_id;
+            $_SESSION['showtime_userid'] = $userId;
         } else {
             $this->error = "Invalid input!";
         }

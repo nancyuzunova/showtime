@@ -8,6 +8,13 @@ class Logging
         $email = addslashes($data['email']);
         $password = addslashes($data['password']);
 
+        if(empty($data['email'])){
+            $this->error .= "Моля въведете вашия имейл!<br>";
+        }
+        if(empty($data['password'])){
+            $this->error .= "Моля въведете вашата парола!<br>";
+        }
+
         $query = "select * from users where email = '$email' limit 1";
 
         $DB = new Connection();

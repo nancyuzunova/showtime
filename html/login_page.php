@@ -20,23 +20,28 @@
                             <input name="email" type="text" placeholder="E-mail" />
                         </div>
                         <?php
-                            if(isset($emailError)){
-                                echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$emailError</div>";
+                        if(isset($resultLogin)){
+                            $errors = explode("<br>", $resultLogin);
+                            foreach ($errors as $error){
+                                if((strpos($error, 'имейл') !== false)){
+                                    echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    break;
+                                }
                             }
-                            if(!isset($emailError) && isset($result) && (strpos($result, 'имейл') !== false)){
-                                echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$result</div>";
-                            }
+                        }
                         ?>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <input name="password" type="password" placeholder="Парола" />
                         </div>
                         <?php
-                            if(isset($passwordError)){
-                                echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$passwordError</div>";
-                            }
-                            if(!isset($passwordError) && isset($result) && (strpos($result, 'парола') !== false)){
-                                echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$result</div>";
+                            if(isset($resultLogin)){
+                                $errors = explode("<br>", $resultLogin);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'парола') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    }
+                                }
                             }
                         ?>
                         <input type="submit" value="Влез" class="btn solid" />
@@ -46,24 +51,75 @@
                         <h2 class="title">Регистрация</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input value="" name="first_name" type="text" placeholder="Име" />
+                            <input value="" name="firstName" type="text" placeholder="Име" />
                         </div>
+                        <?php
+                            if(isset($resultRegister)){
+                                $errors = explode("<br>", $resultRegister);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'ето име') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    }
+                                }
+                            }
+                        ?>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input value=""  name="last_name" type="text" placeholder="Фамилия" />
+                            <input value=""  name="lastName" type="text" placeholder="Фамилия" />
                         </div>
+                        <?php
+                            if(isset($resultRegister)){
+                                $errors = explode("<br>", $resultRegister);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'фамилия') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    }
+                                }
+                            }
+                        ?>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <input name="password" type="password" placeholder="Парола" />
                         </div>
+                        <?php
+                            if(isset($resultRegister)){
+                                $errors = explode("<br>", $resultRegister);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'въведете парола') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    }
+                                }
+                            }
+                        ?>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
                             <input name="password1" type="password" placeholder="Потвърди парола" />
                         </div>
+                        <?php
+                            if(isset($resultRegister)){
+                                $errors = explode("<br>", $resultRegister);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'повторете') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                    }
+                                }
+                            }
+                        ?>
                         <div class="input-field">
                             <i class="fas fa-envelope"></i>
                             <input value="" name="email" type="email" placeholder="E-mail" />
                         </div>
+                        <?php
+                            if(isset($resultRegister)){
+                                $errors = explode("<br>", $resultRegister);
+                                foreach ($errors as $error){
+                                    if((strpos($error, 'имейл') !== false)){
+                                        echo "<div style='color: #0392ce; font-size: 18px; width: 380px; text-align: center;'>$error</div>";
+                                        break;
+                                    }
+                                }
+                            }
+                        ?>
                         <div>
                             <br>
                             <input type="radio" id="male" name="gender" value="male">
@@ -75,7 +131,7 @@
                             <br><br>
                         </div>
 
-                        <input type="submit" class="btn" value="Регистрация" />
+                        <input type="submit" class="btn" alue="Регистрация" />
                     </form>
                 </div>
             </div>
