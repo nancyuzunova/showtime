@@ -21,7 +21,7 @@
     color: white;
     font-size: 35px;
     text-decoration: none;
-    margin: 7px 0 7px 40px;
+    margin: 7px 0 7px 0;
     float: left;
 }
 
@@ -31,7 +31,7 @@
     border: none;
     border-radius: 4px;
     font-size: 15px;
-    margin: 13px 0 13px -420px;
+    margin: 13px 43% 13px 0;
     padding-left: 10px;
     background-image: url("../images/search.png");
     background-repeat: no-repeat;
@@ -51,5 +51,5 @@
     color: white;
     text-decoration: none;
     float: right;
-    margin: 20px 50px 20px 0;
+    margin: 20px 20px 20px 0;
 }

@@ -131,7 +131,7 @@
                             <br><br>
                         </div>
 
-                        <input type="submit" class="btn" alue="Регистрация" />
+                        <input type="submit" class="btn" value="Регистрация" />
                     </form>
                 </div>
             </div>

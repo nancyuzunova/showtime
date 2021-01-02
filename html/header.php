@@ -11,8 +11,8 @@
     <form method="get" action="search.php">
         <div id="inTopBar">
             <a id="headerLogo" href="index.php">FRIENDS</a>
-            <input type="text" id="searchBox" name="find" placeholder="Други потребители">
-            <a id="headerLogout" href="logout.php">Изход</a>
+            <input type="text" id="searchBox" name="find" placeholder="Search for other users">
+            <a id="headerLogout" href="logout.php">Logout</a>
             <a href="profile.php">
                 <img src="<?php echo $headerImage ?>" id="headerImage">
             </a>

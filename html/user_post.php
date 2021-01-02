@@ -11,7 +11,7 @@
         ?>
         <img src="<?php echo $image ?>" style="width: 75px; margin-right: 10px; border-radius: 50%;">
     </div>
-    <div style="width: 100%">
+    <div style="width: 100%; margin-bottom: 100px;">
         <div style="font-weight: bold; color: #405b9d;">
             <?php
                 echo "<a href='profile.php?id=$row[user_id]'>";
