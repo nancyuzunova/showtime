@@ -19,9 +19,9 @@
     <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
         <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
             <form method="post" enctype="multipart/form-data">
-                <textarea name="post" placeholder="Whats on your mind?"></textarea>
-                <input type="file" name="file">
-                <input id="postButton" type="submit" value="post">
+                <textarea name="post" placeholder="What's on your mind?"></textarea>
+                <input type="file" name="file" class="uploadBox">
+                <input id="postButton" type="submit" value="Post">
                 <br>
             </form>
         </div>

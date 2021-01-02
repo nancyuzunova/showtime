@@ -55,12 +55,13 @@
                         <?php
                             $image = "../images/default-avatar.png";
                             if (file_exists($userData['profile_image'])){
+                                $editor = new ImageEditor();
                                 $image = $editor->getThumbProfile($userData['profile_image']);
                             }
                         ?>
                         <img style="width: 150px; border-radius: 50%; border: solid 2px white;" src="<?php echo $image?>">
                         <br>
-                        <a style="text-decoration: none;" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
+                        <a style="text-decoration: none; color: #0392ce;" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@
                 <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
                         <form method="post" enctype="multipart/form-data">
-                            <textarea name="post" placeholder="whats on your mind?"></textarea>
+                            <textarea name="post" placeholder="What's on your mind?"></textarea>
                             <input type="file" name="file">
                             <input id="postButton" type="submit" value="post">
                             <br>
