@@ -7,5 +7,5 @@
         unset($_SESSION['showtime_userid']);
     }
 
-    header("Location: login_page.php");
+    header("Location: loginPage.php");
     die;

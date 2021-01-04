@@ -51,7 +51,7 @@
                     <div class="content">
                         <h3>Still not one of us?</h3><br>
                         <p>Every new friend is a new adventure!<br>Join us now, collect your adventures and turn them into memories!</p><br>
-                        <button class="button transparent">SIGN UP</button>
+                        <button onclick="window.location.href='signUpPage.php'" class="button transparent">SIGN UP</button>
                     </div>
                     <img src="../images/imgLog.svg" width="250px" height="400px" class="image" alt="" >
                 </div>

@@ -17,20 +17,20 @@
     height: 2000px;
     width: 2000px;
     top: -10%;
-    right: 48%;
+    left: 48%;
     transform: translateY(-50%);
     background-color: #0392ce;
     border-radius: 50%;
 }
 
-.login{
+.signUp{
     position: absolute;
-    top: 30%;
-    left: 50%;
+    top: 10%;
+    right: 50%;
     width: 50%;
 }
 
-.loginForm{
+.signUpForm{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,7 +49,7 @@
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
-    margin: 10px;
+    margin: 10px 0;
     height: 55px;
     border-radius: 55px;
     z-index: 1;
@@ -103,6 +103,7 @@
     font-size: 0.8rem;
 }
 
+
 .panelDiv {
     position: absolute;
     height: 100%;
@@ -123,10 +124,15 @@
     align-items: flex-end;
     justify-content: space-around;
     text-align: center;
-    pointer-events: all;
-    color: #fff;
-    padding: 3rem 17% 2rem 12%;
     z-index: 6;
+}
+
+.right-panel {
+    padding: 3rem 12% 2rem 17%;
+}
+
+.panel .content {
+    color: #fff;
 }
 
 .panel h3 {
@@ -139,3 +145,8 @@
     font-size: 0.95rem;
     padding: 0.7rem 0;
 }
+
+.right-panel .image,  .right-panel .content {
+    transform: translateX(800px);
+}
+

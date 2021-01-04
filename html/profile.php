@@ -10,7 +10,7 @@
             $userData = $user->getUser($_GET['id']);
         }
     }else{
-        header("Location: login_page.php");
+        header("Location: loginPage.php");
         die;
     }
 

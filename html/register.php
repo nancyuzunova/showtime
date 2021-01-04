@@ -14,7 +14,7 @@
         $resultRegister = $registration->evaluate($_POST);
 
         if($resultRegister != ""){
-            include("login_page.php");
+            include("signUpPage.php");
         } else {
             header("Location: profile.php");
             die;

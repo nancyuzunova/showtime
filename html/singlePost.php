@@ -7,7 +7,7 @@
         $user = new User();
         $user_data = $user->getUser($user_id);
     } else {
-        header("Location: login_page.php");
+        header("Location: loginPage.php");
         die;
     }
 

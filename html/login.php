@@ -13,7 +13,7 @@
         $resultLogin = $login->login($_POST);
 
         if ($resultLogin != "") {
-            include("login_page.php");
+            include("loginPage.php");
         } else {
             header("Location: profile.php");
             die;

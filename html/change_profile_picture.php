@@ -12,7 +12,7 @@
         $user = new User();
         $userData = $user->getUser($userId);
     }else{
-        header("Location: login_page.php");
+        header("Location: loginPage.php");
         die;
     }
 
