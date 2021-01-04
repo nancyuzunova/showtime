@@ -27,9 +27,20 @@ class Registration{
                 }
             }
             if ($key == "email"){
+                $query = "select email from users";
+                $DB = new Connection();
+                $result = $DB->read($query);
+                foreach ($result as $emailKey){
+                    if (strpos($emailKey['email'], $value) !== false) {
+                        $this->error = $this->error . "User with this email already exists!<br>";
+                        break;
+                    }
+                }
+
                 if (!preg_match(self::EMAIL_PATTERN, $value)){
                     $this->error = $this->error . "Invalid email!<br>";
                 }
+
             }
             if ($key == "firstName"){
                 if (is_numeric($value)){

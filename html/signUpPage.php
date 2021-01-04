@@ -21,7 +21,7 @@
                         if(isset($resultRegister)){
                             $errors = explode("<br>", $resultRegister);
                             foreach ($errors as $error){
-                                if((strpos($error, 'ето име') !== false)){
+                                if((strpos($error, 'first name') !== false)){
                                     echo "<div class='errorDiv'>* $error</div>";
                                 }
                             }
@@ -35,7 +35,7 @@
                         if(isset($resultRegister)){
                             $errors = explode("<br>", $resultRegister);
                             foreach ($errors as $error){
-                                if((strpos($error, 'фамилия') !== false)){
+                                if((strpos($error, 'last name') !== false)){
                                     echo "<div class='errorDiv'>* $error</div>";                                }
                             }
                         }
@@ -48,7 +48,7 @@
                         if(isset($resultRegister)){
                             $errors = explode("<br>", $resultRegister);
                             foreach ($errors as $error){
-                                if((strpos($error, 'въведете парола') !== false)){
+                                if((strpos($error, 'enter yourpassword') !== false)){
                                     echo "<div class='errorDiv'>* $error</div>";                                }
                             }
                         }
@@ -61,7 +61,7 @@
                         if(isset($resultRegister)){
                             $errors = explode("<br>", $resultRegister);
                             foreach ($errors as $error){
-                                if((strpos($error, 'повторете') !== false)){
+                                if((strpos($error, 'confirm your password') !== false)){
                                     echo "<div class='errorDiv'>* $error</div>";                                }
                             }
                         }
@@ -74,7 +74,7 @@
                         if(isset($resultRegister)){
                             $errors = explode("<br>", $resultRegister);
                             foreach ($errors as $error){
-                                if((strpos($error, 'имейл') !== false)){
+                                if((strpos($error, 'email') !== false)){
                                     echo "<div class='errorDiv'>* $error</div>";                                    break;
                                 }
                             }
