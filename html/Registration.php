@@ -11,40 +11,40 @@ class Registration{
             $value = trim($value);
             if(empty($value)){
                 if($key == "firstName") {
-                    $this->error = $this->error . "Моля въведете вашето име!<br>";
+                    $this->error = $this->error . "Please enter your first name!<br>";
                 }
                 if($key == "lastName") {
-                    $this->error = $this->error . "Моля въведете вашата фамилия!<br>";
+                    $this->error = $this->error . "Please enter your last name!<br>";
                 }
                 if($key == "password") {
-                    $this->error = $this->error . "Моля въведете парола!<br>";
+                    $this->error = $this->error . "Please enter your password!<br>";
                 }
                 if($key == "password1") {
-                    $this->error = $this->error . "Моля повторете вашата парола!<br>";
+                    $this->error = $this->error . "Please confirm your password!<br>";
                 }
                 if($key == "email") {
-                    $this->error = $this->error . "Моля въведете вашеия имейл!<br>";
+                    $this->error = $this->error . "Please enter your email!<br>";
                 }
             }
             if ($key == "email"){
                 if (!preg_match(self::EMAIL_PATTERN, $value)){
-                    $this->error = $this->error . "Невалиден имейл адрес!<br>";
+                    $this->error = $this->error . "Invalid email!<br>";
                 }
             }
             if ($key == "firstName"){
                 if (is_numeric($value)){
-                    $this->error = $this->error . "Вашето име не може да съдържа цифри!<br>";
+                    $this->error = $this->error . "First name can't contain numbers!<br>";
                 }
                 if (strstr($value, " ")){
-                    $this->error = $this->error . "Вашето име не може да съдържа празни пространства!<br>";
+                    $this->error = $this->error . "First name can't contain blank spaces!<br>";
                 }
             }
             if ($key == "lastName"){
                 if (is_numeric($value)){
-                    $this->error = $this->error . "Вашата фамилия не може да съдържа цифри!<br>";
+                    $this->error = $this->error . "Last name can't contain numbers!<br>";
                 }
                 if (strstr($value, " ")){
-                    $this->error = $this->error . "Вашата фамилия не може да съдържа празни пространства!<br>";
+                    $this->error = $this->error . "Last name can't contain blank spaces!<br>";
                 }
             }
         }
