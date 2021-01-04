@@ -15,7 +15,7 @@
         if ($resultLogin != "") {
             include("loginPage.php");
         } else {
-            header("Location: profile.php");
+            header("Location: index.php");
             die;
         }
 
