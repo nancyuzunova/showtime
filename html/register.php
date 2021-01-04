@@ -16,7 +16,7 @@
         if($resultRegister != ""){
             include("signUpPage.php");
         } else {
-            header("Location: profile.php");
+            header("Location: index.php");
             die;
         }
 
