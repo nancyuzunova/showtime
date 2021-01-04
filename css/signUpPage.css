@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 
-.mainDiv:before {
+.mainDiv:before{
     content: "";
     position: absolute;
     height: 2000px;
@@ -42,13 +42,13 @@
     text-align: center;
 }
 
-.title {
+.title{
     font-size: 35px;
     color: #0392ce;
     margin-bottom: 10px;
 }
 
-.title1 {
+.title1{
     font-size: 35px;
 }
 
@@ -62,7 +62,7 @@
     z-index: 1;
 }
 
-.inputField i {
+.inputField i{
     text-align: center;
     line-height: 55px;
     color: #acacac;
@@ -70,7 +70,7 @@
     padding: 0 15px 0 20px;
 }
 
-.inputField input {
+.inputField input{
     background: none;
     outline: none;
     border: none;
@@ -80,7 +80,7 @@
     color: #333;
 }
 
-.inputField input::placeholder {
+.inputField input::placeholder{
     color: #aaa;
     font-weight: 500;
 }
@@ -89,9 +89,9 @@ label{
     color: #0392ce;
     font-size: 19px;
     font-weight: bold;
-
 }
-.button {
+
+.button{
     width: 150px;
     background-color: #0392ce;
     border: none;
@@ -107,7 +107,7 @@ label{
     z-index: 1;
 }
 
-.button.transparent {
+.button.transparent{
     margin: 0;
     background: none;
     border: 2px solid #fff;
@@ -116,7 +116,7 @@ label{
     font-weight: bold;
 }
 
-.panelDiv {
+.panelDiv{
     position: absolute;
     height: 100%;
     width: 100%;
@@ -126,11 +126,11 @@ label{
     grid-template-columns: repeat(2, 1fr);
 }
 
-.image {
+.image{
     width: 100%;
 }
 
-.panel {
+.panel{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -142,7 +142,7 @@ label{
     z-index: 6;
 }
 
-.panel p {
+.panel p{
     font-size: 16px;
     font-weight: bold;
     padding: 0.7rem 0;

@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 
-.mainDiv:before {
+.mainDiv:before{
     content: "";
     position: absolute;
     height: 2000px;
@@ -42,17 +42,17 @@
     text-align: center;
 }
 
-.title {
+.title{
     font-size: 35px;
     color: #0392ce;
     margin-bottom: 10px;
 }
 
-.title1 {
+.title1{
     font-size: 35px;
 }
 
-.inputField {
+.inputField{
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
@@ -62,7 +62,7 @@
     z-index: 1;
 }
 
-.inputField i {
+.inputField i{
     text-align: center;
     line-height: 55px;
     color: #acacac;
@@ -70,7 +70,7 @@
     padding: 0 15px 0 20px;
 }
 
-.inputField input {
+.inputField input{
     background: none;
     outline: none;
     border: none;
@@ -80,12 +80,12 @@
     color: #333;
 }
 
-.inputField input::placeholder {
+.inputField input::placeholder{
     color: #aaa;
     font-weight: 500;
 }
 
-.button {
+.button{
     width: 150px;
     background-color: #0392ce;
     border: none;
@@ -101,7 +101,7 @@
     z-index: 1;
 }
 
-.button.transparent {
+.button.transparent{
     margin: 0;
     background: none;
     border: 2px solid #fff;
@@ -110,7 +110,7 @@
     font-weight: bold;
 }
 
-.panelDiv {
+.panelDiv{
     position: absolute;
     height: 100%;
     width: 100%;
@@ -120,11 +120,11 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-.image {
+.image{
     width: 100%;
 }
 
-.panel {
+.panel{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -136,7 +136,7 @@
     z-index: 6;
 }
 
-.panel p {
+.panel p{
     font-size: 16px;
     font-weight: bold;
     padding: 0.7rem 0;

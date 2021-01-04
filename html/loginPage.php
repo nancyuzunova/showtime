@@ -14,7 +14,7 @@
                 <h1 class="title">Sign in</h1>
                 <div class="inputField">
                     <i class="fas fa-envelope"></i>
-                    <input name="email" type="text" placeholder="E-mail" />
+                    <input name="email" type="text" placeholder="E-mail">
                 </div>
                 <?php
                     if(isset($resultLogin)){
@@ -29,7 +29,7 @@
                 ?>
                 <div class="inputField">
                     <i class="fas fa-lock"></i>
-                    <input name="password" type="password" placeholder="Password" />
+                    <input name="password" type="password" placeholder="Password">
                 </div>
                 <?php
                     if(isset($resultLogin)){
@@ -56,6 +56,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

@@ -3,8 +3,10 @@
 class Registration{
 
     const EMAIL_PATTERN = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+    const PASSWORD_PATTERN = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/";
 
     private $error = "";
+    private $pass = "";
 
     public function evaluate($data){
         foreach($data as $key => $value){
@@ -20,7 +22,7 @@ class Registration{
                     $this->error = $this->error . "Please enter your password!<br>";
                 }
                 if($key == "password1") {
-                    $this->error = $this->error . "Please confirm your password!<br>";
+                    $this->error = $this->error . "Please confirm password!<br>";
                 }
                 if($key == "email") {
                     $this->error = $this->error . "Please enter your email!<br>";
@@ -30,32 +32,39 @@ class Registration{
                 $query = "select email from users";
                 $DB = new Connection();
                 $result = $DB->read($query);
+
                 foreach ($result as $emailKey){
-                    if (strpos($emailKey['email'], $value) !== false) {
+                    if (!empty($value) && strpos($emailKey['email'], $value) !== false) {
                         $this->error = $this->error . "User with this email already exists!<br>";
                         break;
                     }
                 }
-
                 if (!preg_match(self::EMAIL_PATTERN, $value)){
                     $this->error = $this->error . "Invalid email!<br>";
                 }
-
+            }
+            if($key == "password"){
+                if(strlen($value) < 6){
+                    $this->error = $this->error . "Your password must be at least 6 characters!<br>";
+                }
+                if (!preg_match(self::PASSWORD_PATTERN, $value)){
+                    $this->error = $this->error . "Your password must contain at least 1 letter and 1 number!<br>";
+                }
+                $pass = $value;
+            }
+            if($key == "password1"){
+                if($pass != $value){
+                    $this->error = $this->error . "Password confirm failed!<br>";
+                }
             }
             if ($key == "firstName"){
-                if (is_numeric($value)){
+                if (preg_match('~[0-9]+~', $value)){
                     $this->error = $this->error . "First name can't contain numbers!<br>";
-                }
-                if (strstr($value, " ")){
-                    $this->error = $this->error . "First name can't contain blank spaces!<br>";
                 }
             }
             if ($key == "lastName"){
-                if (is_numeric($value)){
+                if (preg_match('~[0-9]+~', $value)){
                     $this->error = $this->error . "Last name can't contain numbers!<br>";
-                }
-                if (strstr($value, " ")){
-                    $this->error = $this->error . "Last name can't contain blank spaces!<br>";
                 }
             }
         }
