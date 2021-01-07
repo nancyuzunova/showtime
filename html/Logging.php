@@ -9,10 +9,10 @@ class Logging
         $password = addslashes($data['password']);
 
         if(empty($data['email'])){
-            $this->error .= "Моля въведете вашия имейл!<br>";
+            $this->error .= "Please enter your email!<br>";
         }
         if(empty($data['password'])){
-            $this->error .= "Моля въведете вашата парола!<br>";
+            $this->error .= "Please enter your password!<br>";
         }
 
         $query = "select * from users where email = '$email' limit 1";
@@ -26,10 +26,10 @@ class Logging
                 //create a session data
                 $_SESSION['showtime_userid'] = $user['user_id'];
             } else {
-                $this->error .= "Въведената парола е грешна!<br>";
+                $this->error .= "Wrong password!<br>";
             }
         } else {
-            $this->error .= "Не съществува потребител с такъв имейл!<br>";
+            $this->error .= "Couldn't find your email!<br>";
         }
         return $this->error;
     }
@@ -37,18 +37,5 @@ class Logging
     private function hashText($text){
         $text = hash("sha1", $text);
         return $text;
-    }
-
-    public function checkLogin($id){
-        $query = "select user_id from users where user_id = '$id' limit 1";
-
-        $DB = new Connection();
-        $result = $DB->read($query);
-
-        if($result){
-            return true;
-        }
-
-        return false;
     }
 }

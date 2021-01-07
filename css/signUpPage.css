@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 
-.mainDiv:before {
+.mainDiv:before{
     content: "";
     position: absolute;
     height: 2000px;
@@ -23,39 +23,46 @@
     border-radius: 50%;
 }
 
-.signUp{
-    position: absolute;
-    top: 10%;
-    right: 50%;
-    width: 50%;
-}
-
 .signUpForm{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
+    position: absolute;
+    top: 10%;
+    right: 50%;
+    width: 50%;
 }
 
-.title {
-    font-family: 'Snell Roundhand', cursive;
-    font-size: 2.2rem;
-    color: #444;
+.errorDiv{
+    color: #0392ce;
+    font-size: 18px;
+    width: 380px;
+    text-align: center;
+}
+
+.title{
+    font-size: 35px;
+    color: #0392ce;
     margin-bottom: 10px;
 }
 
-.inputField {
+.title1{
+    font-size: 35px;
+}
+
+.inputField{
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
-    margin: 10px 0;
+    margin: 10px;
     height: 55px;
     border-radius: 55px;
     z-index: 1;
 }
 
-.inputField i {
+.inputField i{
     text-align: center;
     line-height: 55px;
     color: #acacac;
@@ -63,7 +70,7 @@
     padding: 0 15px 0 20px;
 }
 
-.inputField input {
+.inputField input{
     background: none;
     outline: none;
     border: none;
@@ -73,12 +80,18 @@
     color: #333;
 }
 
-.inputField input::placeholder {
+.inputField input::placeholder{
     color: #aaa;
     font-weight: 500;
 }
 
-.button {
+label{
+    color: #0392ce;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.button{
     width: 150px;
     background-color: #0392ce;
     border: none;
@@ -87,66 +100,53 @@
     border-radius: 50px;
     color: #fff;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: bold;
+    font-size: 15px;
     margin: 10px 0;
     cursor: pointer;
     z-index: 1;
 }
 
-.button.transparent {
+.button.transparent{
     margin: 0;
     background: none;
     border: 2px solid #fff;
     width: 130px;
     height: 41px;
-    font-weight: 600;
-    font-size: 0.8rem;
+    font-weight: bold;
 }
 
-
-.panelDiv {
+.panelDiv{
     position: absolute;
     height: 100%;
     width: 100%;
     top: 0;
-    left: 0;
+    left: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.image {
+.image{
     width: 100%;
 }
 
-.panel {
+.panel{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: space-around;
     text-align: center;
+    pointer-events: all;
+    color: #fff;
+    padding: 3rem 17% 2rem 12%;
     z-index: 6;
 }
 
-.right-panel {
-    padding: 3rem 12% 2rem 17%;
-}
-
-.panel .content {
-    color: #fff;
-}
-
-.panel h3 {
-    font-weight: 600;
-    line-height: 1;
-    font-size: 1.5rem;
-}
-
-.panel p {
-    font-size: 0.95rem;
+.panel p{
+    font-size: 16px;
+    font-weight: bold;
     padding: 0.7rem 0;
-}
-
-.right-panel .image,  .right-panel .content {
-    transform: translateX(800px);
+    font-family: 'Georgia', serif;
+    width: 600px;
 }
 

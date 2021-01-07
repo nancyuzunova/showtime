@@ -6,7 +6,6 @@
 
     $firstName = "";
     $lastName = "";
-    $gender = "";
     $email = "";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -22,6 +21,5 @@
 
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
-        $gender = $_POST['gender'];
         $email = $_POST['email'];
     }
