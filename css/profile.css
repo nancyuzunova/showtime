@@ -158,6 +158,22 @@ textarea{
     cursor: pointer;
 }
 
+#changePassword{
+    float: left;
+    background-color: #0392ce;
+    margin: 5px 0 0 0;
+    border: none;
+    color: white;
+    padding: 4px;
+    font-size: 14px;
+    border-radius: 30px;
+    width: 150px;
+    height: 25px;
+    min-width: 50px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 #postsBar{
     margin-top: 20px;
     background-color: white;
