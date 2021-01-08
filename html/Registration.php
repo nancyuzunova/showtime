@@ -6,7 +6,6 @@ class Registration{
     const PASSWORD_PATTERN = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/";
 
     private $error = "";
-    private $pass = "";
 
     public function evaluate($data){
         foreach($data as $key => $value){
@@ -33,10 +32,12 @@ class Registration{
                 $DB = new Connection();
                 $result = $DB->read($query);
 
-                foreach ($result as $emailKey){
-                    if (!empty($value) && strpos($emailKey['email'], $value) !== false) {
-                        $this->error = $this->error . "User with this email already exists!<br>";
-                        break;
+                if(!empty($result)) {
+                    foreach ($result as $emailKey) {
+                        if (!empty($value) && strpos($emailKey['email'], $value) !== false) {
+                            $this->error = $this->error . "User with this email already exists!<br>";
+                            break;
+                        }
                     }
                 }
                 if (!preg_match(self::EMAIL_PATTERN, $value)){

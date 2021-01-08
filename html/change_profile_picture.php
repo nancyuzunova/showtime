@@ -1,10 +1,6 @@
 <?php
     session_start();
-    include("Connection.php");
-    include("Logging.php");
-    include("User.php");
-    include("Post.php");
-    include("ImageEditor.php");
+    include("loader.php");
 
     //check if user is logged in
     if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
@@ -18,12 +14,12 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if (isset($_FILES['file']['name']) && $_FILES['file']['name'] != "") {
-            if ($_FILES['file']['type'] == "image/jpeg"){
+            if ($_FILES['file']['type'] == "image/jpeg") {
                 $allowedSize = 1024 * 1024 * 7; // 7 MB
-                if ($_FILES['file']['size'] <= $allowedSize){
+                if ($_FILES['file']['size'] <= $allowedSize) {
                     //create a folder for each user
                     $folder = "../uploads/" . $userId . "/";
-                    if (!file_exists($folder)){
+                    if (!file_exists($folder)) {
                         mkdir($folder, 0777, true);
                     }
 
@@ -32,23 +28,23 @@
                     move_uploaded_file($_FILES['file']['tmp_name'], $filename);
 
                     $change = "profile";
-                    if (isset($_GET['change'])){
+                    if (isset($_GET['change'])) {
                         $change = $_GET['change'];
                     }
-                    if ($change == "cover"){
-                        if (file_exists($userData['cover_image'])){
+                    if ($change == "cover") {
+                        if (file_exists($userData['cover_image'])) {
                             unlink($userData['cover_image']);
                         }
                         $editor->resizeImage($filename, $filename, 1500, 1500);
                     } else {
-                        if (file_exists($userData['profile_image'])){
+                        if (file_exists($userData['profile_image'])) {
                             unlink($userData['profile_image']);
                         }
                         $editor->resizeImage($filename, $filename, 1500, 1500);
                     }
 
-                    if (file_exists($filename)){
-                        if ($change == "cover"){
+                    if (file_exists($filename)) {
+                        if ($change == "cover") {
                             $query = "update users set cover_image = '$filename' where user_id = $userId";
                             $_POST['is_cover_image'] = 1;
                         } else {
@@ -65,23 +61,11 @@
                         header("Location: profile.php");
                         die();
                     }
-                } else {
-                    displayErrorMessage("Only images of size 7 MB or lower are allowed!");
                 }
-            } else {
-                displayErrorMessage("Only images of JPEG type are allowed!");
             }
-        } else {
-            displayErrorMessage("Please add a valid image!");
         }
     }
 
-    function displayErrorMessage($message){
-        echo "<div style='text-align:center; font-size: 12px; color: white; background-color: gray'>";
-        echo "<br>The following errors occurred:<br><br>";
-        echo $message;
-        echo "</div>";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -96,18 +80,16 @@
         <?php include("header.php") ?>
         <!--Cover area-->
         <div id="profileMainDiv">
-
             <!-- below cover area-->
             <div id="mainContain">
-
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
+                <div class="postArea">
                     <form method="post" enctype="multipart/form-data">
-                        <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                        <divt class="inForm">
                             <input type="file" name="file">
                             <input id="postButton" type="submit" value="Change" style="width: 100px;">
                             <br>
-                            <div style="text-align: center;">
+                            <div class="centered">
                                 <br><br>
                                 <?php
                                     if (isset($_GET['change']) && $_GET['change'] == "cover"){
@@ -122,9 +104,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
-
     </body>
-
 </html>
