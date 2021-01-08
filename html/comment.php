@@ -1,11 +1,9 @@
 <div id="post">
     <div>
         <?php
-        $image = "../images/male.jpg";
-        if (isset($row_user) && $row_user['gender'] == "female") {
-            $image = "../images/female.jpg";
-        }
-        if (file_exists($row_user['profile_image'])) {
+        $image = "../images/default-avatar.png";
+        if (isset($row_user) && file_exists($row_user['profile_image'])) {
+            $editor = new ImageEditor();
             $image = $editor->getThumbProfile($row_user['profile_image']);
         }
         ?>
