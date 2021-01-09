@@ -10,9 +10,11 @@
         }
     ?>
     <a href="profile.php?id=<?php echo $friend_row['user_id']; ?>">
-        <img id="friendsImg" style="width: 75px; margin-right: 10px; border-radius: 50%;" src="<?php echo $image ?>">
+        <img id="friendsImg" style="width: 75px; border-radius: 50%;" src="<?php echo $image ?>">
         <br>
-        <?php echo $friend_row['first_name'] . " " . $friend_row['last_name']; ?>
-
+        <div style="text-decoration: none; color: #0392ce;">
+            <?php echo $friend_row['first_name'] . " " . $friend_row['last_name']; ?>
+        </div>
+        <br>
     </a>
 </div>
