@@ -21,7 +21,11 @@
         if(isset($_POST['firstName'])){
             $settings = new Settings();
             $settings->saveSettings($_POST, $_SESSION['showtime_userid']);
-        }else {
+        }elseif (isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['password3'])){
+            $settings = new Settings();
+            $settings->changePassword($_POST, $_SESSION['showtime_userid']);
+        }
+        else {
             $post = new Post();
             $userId = $_SESSION['showtime_userid'];
             $result = $post->createPost($userId, $_POST, $_FILES);
@@ -62,6 +66,20 @@
 
     <body>
         <?php include("header.php") ?>
+
+        <!--Change password-->
+        <div id="changePassword" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb; z-index: 10;">
+            <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
+                <form method="post" action="profile.php?change=password" enctype="multipart/form-data">
+                    <div style="height: 190px; border: solid thin #aaa; padding: 10px; background-color: white;">
+                        <input style="width: 550px;" type='password' id='textbox' name='password' placeholder='Old password'>
+                        <input style="width: 550px;" type='password' id='textbox' name='password2' placeholder='New password'>
+                        <input style="width: 550px;" type='password' id='textbox' name='password3' placeholder='Confirm new password'>
+                        <input style="margin-left: 10px" type="submit" id="changePassword" value="Save password">
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!--Change profile image-->
         <div id="changeProfileImage" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb; z-index: 10; position: absolute;">
@@ -194,6 +212,12 @@
     function hideChangeCover(){
         var coverImage = document.getElementById("changeCoverImage");
         coverImage.style.display = "none";
+    }
+
+    function showChangePassword(event){
+        event.preventDefault();
+        var profileImage = document.getElementById("changePassword");
+        profileImage.style.display = "block";
     }
 
     window.onkeydown = function (key){

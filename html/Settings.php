@@ -14,14 +14,6 @@ class Settings{
 
     public function saveSettings($data, $id){
         $DB = new Connection();
-        $password = $data['password'];
-        if(strlen($password)<30){
-            if($data['password'] == $data['password2']) {
-                $data['password'] = hash("sha1", $password);
-            }else{
-                unset($data['password']);
-            }
-        }
 
         unset($data['password2']);
 
@@ -39,5 +31,24 @@ class Settings{
         $query = trim($query, ",");
         $query .= " where user_id = '$id' limit 1";
         $DB->write($query);
+    }
+
+    public function changePassword($data, $id){
+        $DB = new Connection();
+        $oldPassword = addslashes($data['password']);
+        $newPassword = addslashes($data['password2']);
+        $confirmPassword = addslashes($data['password3']);
+        $query = "SELECT password FROM users WHERE user_id = '$id' limit 1";
+        $row = $DB->read($query);
+        if ($row[0]){
+            $password = $row[0]['password'];
+            if ($password == hash("sha1", $oldPassword)){
+                if ($newPassword == $confirmPassword && $newPassword != $oldPassword){
+                    $hashed = hash("sha1", $newPassword);
+                    $query = "UPDATE users SET password = '$hashed' WHERE user_id = '$id' limit 1";
+                    $DB->write($query);
+                }
+            }
+        }
     }
 }

@@ -18,7 +18,7 @@
                     echo "<br>About me:<br>
                             <textarea id='textbox' style='height: 200px;' name='about'>".htmlspecialchars($settings['about'])."</textarea>";
                     echo '<input id="postButton" type="submit" value="Save">';
-                    echo '<input id="changePassword" type="submit" value="Change password">';
+                    echo '<input onclick="showChangePassword(event)" id="changePassword" type="submit" value="Change password">';
                 }
             ?>
         </form>
