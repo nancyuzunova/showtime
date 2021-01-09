@@ -1,20 +1,20 @@
 <div id="post">
     <div>
         <?php
-            $image = "../images/male.jpg";
-            if ($row_user['gender'] == "female") {
-                $image = "../images/female.jpg";
-            }
-            if (file_exists($row_user['profile_image'])) {
+            $image = "../images/default-avatar.png";
+            if (isset($row_user) && file_exists($row_user['profile_image'])) {
+                $editor = new ImageEditor();
                 $image = $editor->getThumbProfile($row_user['profile_image']);
             }
         ?>
-        <img src="<?php echo $image ?>" style="width: 75px; margin-right: 10px; border-radius: 50%;">
+        <img src="<?php echo $image ?>" style="width: 75px; margin: 5px 10px 0 5px; border-radius: 50%;">
     </div>
-    <div style="width: 100%; margin-bottom: 100px;">
-        <div style="font-weight: bold; color: #405b9d;">
+    <div style="width: 100%;">
+        <div style="font-weight: bold; color: #405b9d; margin: 5px 3px 10px 0;">
             <?php
-                echo "<a href='profile.php?id=$row[user_id]'>";
+                if(isset($row)) {
+                    echo "<a style='color: #0392ce; text-decoration: none;' href='profile.php?id=$row[user_id]'>";
+                }
                 echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
                 echo "</a>";
                 if ($row['is_profile_image']) {
@@ -32,14 +32,28 @@
                     echo "<span style='font-weight: normal; color: gray'> updated $pronoun cover image</span>";
                 }
             ?>
+            <span style="color: #999; float: right;">
+            <?php
+            $post = new Post();
+            if ($post->isMyPost($row['post_id'], $_SESSION['showtime_userid'])) {
+                echo "
+                        <a style='text-decoration: none; color: #0392ce' href='edit.php?id=$row[post_id]'>Edit</a> |
+                        <a style='text-decoration: none; color: #0392ce' href='delete.php?id=$row[post_id]'>Delete</a>";
+            }
+            ?>
+        </span>
         </div>
-        <?php echo htmlspecialchars($row['post']); ?>
-        <br><br>
+        <div style="margin: 5px 5px 7px 10px; font-size: 17px;">
+            <?php echo htmlspecialchars($row['post']); ?>
+        </div>
+
         <?php
         if (file_exists($row['image'])) {
             $editor = new ImageEditor();
             $postImage = $editor->getThumbPost($row['image']);
+            echo "<div style='margin: margin: 5px 5px 7px 10px;'>";
             echo "<img src='$postImage' style='width: 80%;'>";
+            echo "</div>";
         }
         ?>
         <br><br>
@@ -47,25 +61,15 @@
             $likes = ($row['likes'] > 0) ? "(" . $row['likes'] . ")" : "";
 
         ?>
-        <a href="like.php?type=post&id=<?php echo $row['post_id'];?>">Like<?php echo $likes?></a> .
+        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="like.php?type=post&id=<?php echo $row['post_id'];?>">Like<?php echo $likes?></a> |
         <?php
             $comments = "";
             if($row['comments'] > 0){
                 $comments = "(" . $row['comments'] . ")";
             }
         ?>
-        <a href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment<?php echo $comments ?></a> .
-        <span style="color: #999;"><?php echo htmlspecialchars($row['date']); ?></span>
-        <span style="color: #999; float: right">
-            <?php
-                $post = new Post();
-                if ($post->isMyPost($row['post_id'], $_SESSION['showtime_userid'])) {
-                    echo "
-                        <a href='edit.php?id=$row[post_id]'>Edit</a> .
-                        <a href='delete.php?id=$row[post_id]'>Delete</a>";
-                }
-            ?>
-        </span>
+        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment<?php echo $comments ?></a>
+        <span style="color: #999; float: right;"><?php echo htmlspecialchars($row['date']); ?></span>
         <?php
             $iLiked = false;
             if(isset($_SESSION['showtime_userid'])){
@@ -83,7 +87,7 @@
             }
             if($row['likes']>0){
                 echo "<br>";
-                echo "<a style='text-decoration: none;' href='likes.php?type=post&id=$row[post_id]'>";
+                echo "<a style='text-decoration: none; color: #0392ce;' href='likes.php?type=post&id=$row[post_id]'>";
                 if($row['likes'] == 1){
                     if($iLiked){
                         echo "<div style='text-align: left;'> You liked this post </div>";

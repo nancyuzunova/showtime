@@ -27,7 +27,7 @@
         </div>
 
         <!--Posts-->
-        <div id="postsBar">
+        <div id="postsBar" style="background-color: #d0d8e4;">
             <?php
                 if($posts){
                     foreach ($posts as $row){

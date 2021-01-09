@@ -46,6 +46,7 @@
     <head>
         <title>Delete | Show Time</title>
         <link rel="stylesheet" href="../css/profile.css">
+        <link rel="stylesheet" href="../css/header.css">
         <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     </head>
 

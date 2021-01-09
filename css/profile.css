@@ -177,14 +177,16 @@ textarea{
 #postsBar{
     margin-top: 20px;
     background-color: white;
-    padding: 10px;
+    width: 100%;
 }
 
 #post{
+    border-radius: 4px;
     padding: 4px;
     font-size: 13px;
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    background-color: white;
 }
 
 .uploadBox{
@@ -205,4 +207,20 @@ textarea{
     border: none;
     border-radius: 50px;
     outline: none;
+}
+
+.postArea{
+    min-height: 400px;
+    flex: 2.5;
+    padding: 20px 0 20px 20px;
+}
+
+.inForm{
+    border: solid thin #aaa;
+    padding: 10px;
+    background-color: white;
+}
+
+.centered{
+    text-align: center;
 }
