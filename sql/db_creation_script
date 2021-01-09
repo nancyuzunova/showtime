@@ -1,0 +1,55 @@
+CREATE SCHEMA `showtime` ;
+
+USE `showtime`;
+
+CREATE TABLE showtime.`users` ( id INT NOT NULL AUTO_INCREMENT UNIQUE, user_id INT NOT NULL , 
+first_name VARCHAR(50) NOT NULL , last_name VARCHAR(50) NOT NULL , email VARCHAR(50) NOT NULL , 
+password VARCHAR(100) NOT NULL , gender VARCHAR(6) NOT NULL , date_created TIMESTAMP NOT NULL , 
+url VARCHAR(100) NOT NULL , profile_image VARCHAR(500) NOT NULL , cover_image VARCHAR(500) NOT NULL , 
+likes INT NOT NULL , about VARCHAR(1024) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+CREATE TABLE showtime.`posts` ( id INT NOT NULL AUTO_INCREMENT UNIQUE, post_id INT NOT NULL , 
+user_id INT NOT NULL , post TEXT NOT NULL , image VARCHAR(500) NOT NULL , has_image TINYINT(1) NOT NULL , 
+is_profile_image TINYINT(1) NOT NULL , is_cover_image TINYINT(1) NOT NULL , comments INT NOT NULL , 
+likes INT NOT NULL , date TIMESTAMP NOT NULL , parent BIGINT(20) NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+CREATE TABLE showtime.`likes` ( id BIGINT(20) NOT NULL AUTO_INCREMENT UNIQUE, type VARCHAR(10) NOT NULL , 
+content_id BIGINT(20) NOT NULL , likes TEXT NOT NULL , following TEXT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+
+ALTER TABLE `users` ADD INDEX(`user_id`);
+
+ALTER TABLE `users` ADD INDEX(`first_name`);
+
+ALTER TABLE `users` ADD INDEX(`last_name`);
+
+ALTER TABLE `users` ADD INDEX(`email`);
+
+ALTER TABLE `users` ADD INDEX(`gender`);
+
+ALTER TABLE `users` ADD INDEX(`date_created`);
+
+ALTER TABLE `users` ADD INDEX(`url`);
+
+ALTER TABLE `users` ADD INDEX(`likes`);
+
+ALTER TABLE `posts` ADD INDEX(`post_id`);
+
+ALTER TABLE `posts` ADD INDEX(`user_id`);
+
+ALTER TABLE `posts` ADD INDEX(`has_image`);
+
+ALTER TABLE `posts` ADD INDEX( `is_profile_image`);
+
+ALTER TABLE `posts` ADD INDEX( `is_cover_image`);
+
+ALTER TABLE `posts` ADD INDEX( `comments`);
+
+ALTER TABLE `posts` ADD INDEX( `likes`);
+
+ALTER TABLE `posts` ADD INDEX( `date`);
+
+ALTER TABLE `posts` ADD INDEX( `parent`);
+
+ALTER TABLE `likes` ADD INDEX( `type`);
+
+ALTER TABLE `likes` ADD INDEX( `content_id`);
