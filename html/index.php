@@ -54,12 +54,12 @@
                     <div id="friendsBar" style="text-align: center; font-size: 20px; color: #405d9b; background-color: #d0d8e4">
                         <?php
                             $image = "../images/default-avatar.png";
-                            if (file_exists($userData['profile_image'])){
+                            if (isset($userData['profile_image']) && file_exists($userData['profile_image'])){
                                 $editor = new ImageEditor();
                                 $image = $editor->getThumbProfile($userData['profile_image']);
                             }
                         ?>
-                        <img style="width: 150px; border-radius: 50%; border: solid 2px white;" src="<?php echo $image?>">
+                        <a href="profile.php"><img style="width: 150px; border-radius: 50%; border: solid 2px white;" src="<?php echo $image?>"></a>
                         <br>
                         <a style="text-decoration: none; color: #0392ce;" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
                     </div>
