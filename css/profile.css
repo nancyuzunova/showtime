@@ -103,7 +103,6 @@ body{
 #friendsImg{
     width: 75px;
     height: 75px;
-    float: left;
     margin: 8px;
 }
 
@@ -111,7 +110,8 @@ body{
     clear: both;
     font-size: 12px;
     font-weight: bold;
-    color: #405b9d
+    color: #405b9d;
+    text-decoration: none;
 }
 
 textarea{
