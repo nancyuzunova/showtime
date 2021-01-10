@@ -22,6 +22,7 @@
             ?>
         </form>
 
+        <br><br><br>Change password:
         <form method="post" enctype="multipart/form-data">
             <?php
                 $settings = new Settings();

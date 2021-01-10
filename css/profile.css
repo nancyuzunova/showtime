@@ -159,7 +159,7 @@ textarea{
 }
 
 #changePassword{
-    float: left;
+    float: right;
     background-color: #0392ce;
     margin: 5px 0 0 0;
     border: none;
