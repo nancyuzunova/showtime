@@ -41,12 +41,14 @@ class Settings{
         $query = "SELECT password FROM users WHERE user_id = '$id' limit 1";
         $row = $DB->read($query);
         if ($row[0]){
-            $password = $row[0]['password'];
-            if ($password == hash("sha1", $oldPassword)){
+            $hashedPassword = $row[0]['password'];
+            if (password_verify($oldPassword, $hashedPassword)){
                 if ($newPassword == $confirmPassword && $newPassword != $oldPassword){
-                    $hashed = hash("sha1", $newPassword);
-                    $query = "UPDATE users SET password = '$hashed' WHERE user_id = '$id' limit 1";
-                    $DB->write($query);
+                    $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
+                    if ($hashed){
+                        $query = "UPDATE users SET password = '$hashed' WHERE user_id = '$id' limit 1";
+                        $DB->write($query);
+                    }
                 }
             }
         }

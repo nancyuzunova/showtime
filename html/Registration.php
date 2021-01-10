@@ -100,7 +100,7 @@ class Registration{
     }
 
     private function hashText($text){
-        $text = hash("sha1", $text);
+        $text = password_hash($text, PASSWORD_DEFAULT);
         return $text;
     }
 

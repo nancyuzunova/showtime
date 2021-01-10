@@ -22,7 +22,7 @@ class Logging
 
         if ($result){
             $user = $result[0];
-            if ($this->hashText($password) == $user['password']){
+            if (password_verify($password, $user['password'])){
                 //create a session data
                 $_SESSION['showtime_userid'] = $user['user_id'];
             } else {
@@ -32,10 +32,5 @@ class Logging
             $this->error .= "Couldn't find your email!<br>";
         }
         return $this->error;
-    }
-
-    private function hashText($text){
-        $text = hash("sha1", $text);
-        return $text;
     }
 }
