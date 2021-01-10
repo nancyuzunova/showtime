@@ -1,12 +1,15 @@
 <?php
     include("loader.php");
 
-    //check if user is logged in
-    if (isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])) {
-        $user_id = $_SESSION['showtime_userid'];
+    if(isset($_SESSION['showtime_userid']) && is_numeric($_SESSION['showtime_userid'])){
+        $userId = $_SESSION['showtime_userid'];
         $user = new User();
-        $user_data = $user->getUser($user_id);
-    } else {
+        $userData = $user->getUser($userId);
+        $USER = $userData;
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $userData = $user->getUser($_GET['id']);
+        }
+    }else{
         header("Location: loginPage.php");
         die;
     }

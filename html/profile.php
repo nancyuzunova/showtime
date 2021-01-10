@@ -139,6 +139,9 @@
                     <?php
                         if($userData['user_id'] == $_SESSION['showtime_userid']) {
                             echo '<a href="change_profile_picture.php?change=cover"><button id="changeCover" onclick="showChangeCover(event)">Change cover</button></a>';
+                        }else{
+                            echo '<a href="change_profile_picture.php?change=cover"><button id="changeCover" disabled> Change cover</button></a>';
+
                         }
                     ?>
                     <br>
@@ -147,6 +150,10 @@
                     <?php
                         if($userData['user_id'] == $_SESSION['showtime_userid']) {
                             echo '<a href="change_profile_picture.php?change=profile"><button id="changeProfile" onclick="showChangeProfile(event)">Change photo</button></a>';
+                        }
+                        else{
+                            echo '<a href="change_profile_picture.php?change=profile"><button id="changeProfile" disabled>Change photo</button></a>';
+
                         }
                     ?>
                 </div>
