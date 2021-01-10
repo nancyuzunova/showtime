@@ -147,6 +147,16 @@ label{
     font-weight: bold;
     padding: 0.7rem 0;
     font-family: 'Georgia', serif;
-    width: 600px;
 }
 
+@media (max-height: 715px) {
+    .image{
+        height: 60%;
+    }
+}
+
+@media (max-height: 730px) {
+    .mainDiv{
+        overflow: auto;
+    }
+}

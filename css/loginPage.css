@@ -23,6 +23,14 @@
     border-radius: 50%;
 }
 
+.formDiv{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
 .loginForm{
     display: flex;
     align-items: center;
@@ -53,6 +61,7 @@
 }
 
 .inputField{
+    font-family: "Poppins", sans-serif;
     max-width: 380px;
     width: 100%;
     background-color: #f0f0f0;
@@ -141,5 +150,10 @@
     font-weight: bold;
     padding: 0.7rem 0;
     font-family: 'Georgia', serif;
-    width: 600px;
+}
+
+@media (max-height: 715px) {
+    .image {
+        height: 60%;
+    }
 }
