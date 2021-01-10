@@ -2,8 +2,10 @@
     <div style="padding: 20px; max-width: 500px; display: inline-block;">
         <form method="post" enctype="multipart/form-data">
             <?php
-                $settings = new Settings();
-                $settings = $settings->getSettings($_SESSION['showtime_userid']);
+                if(isset($userData)) {
+                    $settings = new Settings();
+                    $settings = $settings->getSettings($userData['user_id']);
+                }
 
                 if(is_array($settings)) {
                     echo "<br><p style='color: #0392ce; font-weight: bold;'>About me:</p><br>

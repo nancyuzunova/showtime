@@ -1,9 +1,11 @@
 <div style="min-height: 400px; width: 100%; background-color: white; text-align: center;">
     <div style="padding: 20px;">
         <?php
-            $DB = new Connection();
-            $query = "select image, post_id from posts where has_image = 1 && user_id = $userData[user_id] order by id desc limit 30";
-            $images = $DB->read($query);
+            if(isset($userData)) {
+                $DB = new Connection();
+                $query = "select image, post_id from posts where has_image = 1 && user_id = $userData[user_id] order by id desc limit 30";
+                $images = $DB->read($query);
+            }
 
             if(is_array($images)){
                 foreach ($images as $imageRow) {

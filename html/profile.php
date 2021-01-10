@@ -152,7 +152,11 @@
                         <input id="followButton" type="button" value="Follow">
                     </a>
                 </div>
-                <a href="index.php"><div class="menuButtons">Timeline</div></a>
+                <?php
+                    if($userData['user_id'] == $_SESSION['showtime_userid']) {
+                        echo '<a href="index.php"><div class="menuButtons">Settings</div></a>';
+                    }
+                ?>
                 <a href="profile.php?section=about&id=<?php echo $userData['user_id'] ?>" ><div class="menuButtons">About</div></a>
                 <a href="profile.php?section=followers&id=<?php echo $userData['user_id'] ?>"><div class="menuButtons">Followers</div></a>
                 <a href="profile.php?section=following&id=<?php echo $userData['user_id'] ?>"><div class="menuButtons">Following</div></a>

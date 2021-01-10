@@ -1,12 +1,9 @@
 <div id="friends">
     <?php
-        $image = "../images/male.jpg";
-        if (isset($friend_row['gender']) && $friend_row['gender'] == "female") {
-            $image = "../images/female.jpg";
-        }
-        if (file_exists($friend_row['profile_image'])) {
+        $headerImage = "../images/default-avatar.png";
+        if(isset($userData) && isset($USER) && file_exists($USER['profile_image'])){
             $editor = new ImageEditor();
-            $image = $editor->getThumbProfile($friend_row['profile_image']);
+            $headerImage = $editor->getThumbProfile($USER['profile_image']);
         }
     ?>
     <a href="profile.php?id=<?php echo $friend_row['user_id']; ?>">
