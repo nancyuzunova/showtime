@@ -6,14 +6,16 @@
             $editor = new ImageEditor();
             $image = $editor->getThumbProfile($row_user['profile_image']);
         }
+        $commentOwner = new User();
+        $commentOwner = $commentOwner->getUser($comment['user_id']);
         ?>
-        <img src="<?php echo $image ?>" style="width: 75px; margin-right: 10px; border-radius: 50%;">
+        <img src="<?php echo $editor->getThumbProfile($commentOwner['profile_image']) ?>" style="width: 75px; margin-right: 10px; border-radius: 50%;">
     </div>
     <div style="width: 100%">
         <div style="font-weight: bold; color: #405b9d;">
             <?php
                 echo "<a href='profile.php?id=$comment[user_id]'>";
-                echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
+                echo htmlspecialchars($commentOwner['first_name']) . " " . htmlspecialchars($commentOwner['last_name']);
                 echo "</a>";
                 if ($comment['is_profile_image']) {
                     $pronoun = "his";
