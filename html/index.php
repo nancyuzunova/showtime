@@ -91,7 +91,7 @@
                             }
 
                             if($followersIds){
-                                $query = "select * from posts where parent = 0 and user_id in('" . $followersIds . "') order by id desc limit 30";
+                                $query = "select * from posts where parent = 0 and user_id in('" . $followersIds . "') order by date desc limit 30";
                                 $posts = $DB->read($query);
                             }
 
