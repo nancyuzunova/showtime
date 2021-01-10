@@ -7,7 +7,7 @@
                 $image = $editor->getThumbProfile($row_user['profile_image']);
             }
         ?>
-        <img src="<?php echo $image ?>" style="width: 75px; margin: 5px 10px 0 5px; border-radius: 50%;">
+        <a href="profile.php?id=<?php echo $row_user['user_id']; ?>"><img src="<?php echo $image ?>" style="width: 75px; margin: 5px 10px 0 5px; border-radius: 50%;"></a>
     </div>
     <div style="width: 100%;">
         <div style="font-weight: bold; color: #405b9d; margin: 5px 3px 10px 0;">
