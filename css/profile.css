@@ -224,3 +224,10 @@ textarea{
 .centered{
     text-align: center;
 }
+
+.errorDiv{
+    color: #0392ce;
+    font-size: 18px;
+    width: 380px;
+    text-align: center;
+}
