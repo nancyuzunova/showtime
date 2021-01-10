@@ -1,9 +1,9 @@
 <div id="friends">
     <?php
-        $headerImage = "../images/default-avatar.png";
+        $image = "../images/default-avatar.png";
         if(isset($userData) && isset($USER) && file_exists($USER['profile_image'])){
             $editor = new ImageEditor();
-            $headerImage = $editor->getThumbProfile($USER['profile_image']);
+            $image = $editor->getThumbProfile($USER['profile_image']);
         }
     ?>
     <a href="profile.php?id=<?php echo $friend_row['user_id']; ?>">
