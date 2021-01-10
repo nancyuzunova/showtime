@@ -10,40 +10,42 @@
 
     <body>
         <div class="mainDiv">
-            <form class="loginForm" method="post" action="login.php">
-                <h1 class="title">Sign in</h1>
-                <div class="inputField">
-                    <i class="fas fa-envelope"></i>
-                    <input name="email" type="text" placeholder="E-mail">
-                </div>
-                <?php
-                    if(isset($resultLogin)){
-                        $errors = explode("<br>", $resultLogin);
-                        foreach ($errors as $error){
-                            if((strpos($error, 'email') !== false)){
-                                echo "<div class='errorDiv'>* $error</div>";
-                                break;
+            <div class="formDiv">
+                <form class="loginForm" method="post" action="login.php">
+                    <h1 class="title">Sign in</h1>
+                    <div class="inputField">
+                        <i class="fas fa-envelope"></i>
+                        <input name="email" type="text" placeholder="E-mail">
+                    </div>
+                    <?php
+                        if(isset($resultLogin)){
+                            $errors = explode("<br>", $resultLogin);
+                            foreach ($errors as $error){
+                                if((strpos($error, 'email') !== false)){
+                                    echo "<div class='errorDiv'>* $error</div>";
+                                    break;
+                                }
                             }
                         }
-                    }
-                ?>
-                <div class="inputField">
-                    <i class="fas fa-lock"></i>
-                    <input name="password" type="password" placeholder="Password">
-                </div>
-                <?php
-                    if(isset($resultLogin)){
-                        $errors = explode("<br>", $resultLogin);
-                        foreach ($errors as $error){
-                            if((strpos($error, 'password') !== false)){
-                                echo "<div class='errorDiv'> * $error</div>";
-                                break;
+                    ?>
+                    <div class="inputField">
+                        <i class="fas fa-lock"></i>
+                        <input name="password" type="password" placeholder="Password">
+                    </div>
+                    <?php
+                        if(isset($resultLogin)){
+                            $errors = explode("<br>", $resultLogin);
+                            foreach ($errors as $error){
+                                if((strpos($error, 'password') !== false)){
+                                    echo "<div class='errorDiv'> * $error</div>";
+                                    break;
+                                }
                             }
                         }
-                    }
-                ?>
-                <button class="button">Sign in</button>
-            </form>
+                    ?>
+                    <button class="button">Sign in</button>
+                </form>
+            </div>
 
             <div class="panelDiv">
                 <div class="panel">
