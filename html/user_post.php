@@ -7,7 +7,7 @@
                 $image = $editor->getThumbProfile($row_user['profile_image']);
             }
         ?>
-        <img src="<?php echo $image ?>" style="width: 75px; margin: 5px 10px 0 5px; border-radius: 50%;">
+        <a href="profile.php?id=<?php echo $row_user['user_id']; ?>"><img src="<?php echo $image ?>" style="width: 75px; margin: 5px 10px 0 5px; border-radius: 50%;"></a>
     </div>
     <div style="width: 100%;">
         <div style="font-weight: bold; color: #405b9d; margin: 5px 3px 10px 0;">
@@ -58,19 +58,7 @@
         ?>
         <br><br>
         <?php
-            $likes = ($row['likes'] > 0) ? "(" . $row['likes'] . ")" : "";
-
-        ?>
-        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="like.php?type=post&id=<?php echo $row['post_id'];?>">Like<?php echo $likes?></a> |
-        <?php
-            $comments = "";
-            if($row['comments'] > 0){
-                $comments = "(" . $row['comments'] . ")";
-            }
-        ?>
-        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment<?php echo $comments ?></a>
-        <span style="color: #999; float: right;"><?php echo htmlspecialchars($row['date']); ?></span>
-        <?php
+            $likesText = ($row['likes'] > 0) ? "(" . $row['likes'] . ")" : "";
             $iLiked = false;
             if(isset($_SESSION['showtime_userid'])){
                 $userId = $_SESSION['showtime_userid'];
@@ -85,6 +73,18 @@
                     }
                 }
             }
+            $like = $iLiked ? "Dislike" : "Like"
+        ?>
+        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="like.php?type=post&id=<?php echo $row['post_id'];?>"><?php echo $like . $likesText?></a> |
+        <?php
+            $comments = "";
+            if($row['comments'] > 0){
+                $comments = "(" . $row['comments'] . ")";
+            }
+        ?>
+        <a style="text-decoration: none; color: #0392ce; font-size: 15px; margin-bottom: 5px;" href="singlePost.php?id=<?php echo $row['post_id'] ?>">Comment<?php echo $comments ?></a>
+        <span style="color: #999; float: right;"><?php echo htmlspecialchars($row['date']); ?></span>
+        <?php
             if($row['likes']>0){
                 echo "<br>";
                 echo "<a style='text-decoration: none; color: #0392ce;' href='likes.php?type=post&id=$row[post_id]'>";

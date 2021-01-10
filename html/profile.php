@@ -150,7 +150,11 @@
                 </div>
                 <div id="buttonFollowDiv">
                     <a href="like.php?type=user&id=<?php echo $userData['user_id'] ?>">
-                        <input id="followButton" type="button" value="Follow">
+                        <?php
+                        if($userData['user_id'] != $_SESSION['showtime_userid']) {
+                            echo '<input id="followButton" type="button" value="Follow">';
+                        }
+                        ?>
                     </a>
                 </div>
                 <?php
