@@ -17,14 +17,18 @@
 
     <!--post area-->
     <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-        <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-            <form method="post" enctype="multipart/form-data">
-                <textarea name="post" placeholder="What's on your mind?"></textarea>
-                <input type="file" name="file" class="uploadBox">
-                <input id="postButton" type="submit" value="Post">
+        <?php
+        if ($_SESSION['showtime_userid'] == $userData['user_id']){
+            echo "<div style='border: solid thin #aaa; padding: 10px; background-color: white;'>
+            <form method='post' enctype='multipart/form-data'>
+                <textarea name='post' placeholder='What's on your mind?'></textarea>
+                <input type='file' name='file' class='uploadBox'>
+                <input id='postButton' type='submit' value='Post'>
                 <br>
             </form>
-        </div>
+        </div>";
+        }
+        ?>
 
         <!--Posts-->
         <div id="postsBar" style="background-color: #d0d8e4;">
