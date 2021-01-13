@@ -23,8 +23,7 @@ class User{
             $query = "select following from likes where type = '$type' && content_id = '$id' limit 1";
             $result = $DB->read($query);
             if (is_array($result)) {
-                $following = json_decode($result[0]['following'], true);
-                return $following;
+                return json_decode($result[0]['following'], true);
             }
         }
 

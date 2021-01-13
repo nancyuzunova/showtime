@@ -152,7 +152,21 @@
                     <a href="like.php?type=user&id=<?php echo $userData['user_id'] ?>">
                         <?php
                         if($userData['user_id'] != $_SESSION['showtime_userid']) {
-                            echo '<input id="followButton" type="button" value="Follow">';
+                            $myId = $_SESSION['showtime_userid'];
+                            $user = new User();
+                            $following = $user->getFollowing($myId, "user");
+                            $iFollow = false;
+                            if (is_array($following)){
+                                $userIds = array_column($following, "user_id");
+                                if (in_array($userData['user_id'], $userIds)){
+                                    $iFollow = true;
+                                }
+                            }
+                            if ($iFollow){
+                                echo '<input id="followButton" type="button" value="Unfollow">';
+                            } else {
+                                echo '<input id="followButton" type="button" value="Follow">';
+                            }
                         }
                         ?>
                     </a>
