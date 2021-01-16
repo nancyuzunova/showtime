@@ -5,7 +5,7 @@
         <div id="friendsBar">
             Following<br>
             <?php
-            if(isset($friends)){
+            if($friends){
                 foreach ($friends as $friend){
                     $user = new User();
                     $friend_row = $user->getUser($friend['user_id']);

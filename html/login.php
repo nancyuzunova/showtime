@@ -1,8 +1,7 @@
 <?php
     session_start();
 
-    include("Connection.php");
-    include("Logging.php");
+    include("loader.php");
 
     $email = "";
     $password = "";

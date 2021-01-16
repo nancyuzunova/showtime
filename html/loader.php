@@ -1,9 +1,10 @@
 <?php
     session_start();
 
-    include("Connection.php");
-    include("Logging.php");
-    include("User.php");
-    include("Post.php");
-    include("ImageEditor.php");
-    include("Settings.php");
+    include("../classes/Connection.php");
+    include("../classes/Registration.php");
+    include("../classes/Logging.php");
+    include("../classes/User.php");
+    include("../classes/Post.php");
+    include("../classes/ImageEditor.php");
+    include("../classes/Settings.php");

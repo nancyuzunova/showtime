@@ -1,8 +1,7 @@
 <?php
     session_start();
 
-    include("Connection.php");
-    include("Registration.php");
+    include("loader.php");
 
     $firstName = "";
     $lastName = "";
