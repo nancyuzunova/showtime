@@ -6,7 +6,6 @@
     $email = "";
     $password = "";
 
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $login = new Logging();
         $resultLogin = $login->login($_POST);

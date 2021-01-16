@@ -59,23 +59,23 @@
         <!-- below cover area-->
         <div id="mainContain">
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                <div class="editDelDiv1">
+                    <div class="editDelDiv2">
                         <form method="post">
                                 <?php
-                                if ($error != "") {
-                                    echo $error;
-                                } else {
-                                    if ($row) {
-                                        echo "Are you sure you want to delete this post?<br><br>";
-                                        $user = new User();
-                                        $row_user = $user->getUser($row['user_id']);
-                                        include("delete_post.php");
+                                    if ($error != "") {
+                                        echo $error;
+                                    } else {
+                                        if ($row) {
+                                            echo "Are you sure you want to delete this post?<br><br>";
+                                            $user = new User();
+                                            $row_user = $user->getUser($row['user_id']);
+                                            include("delete_post.php");
 
-                                        echo "<input style='width: 100px' id='postButton' type='submit' value='Delete'>";
-                                        echo "<input type='hidden' name='postId' value='$row[post_id]'>";
+                                            echo "<input class='fullWidth' id='postButton' type='submit' value='Delete'>";
+                                            echo "<input type='hidden' name='postId' value='$row[post_id]'>";
+                                        }
                                     }
-                                }
                                 ?>
                             <br>
                         </form>

@@ -1,12 +1,10 @@
 <?php
 
-class Post
-{
+class Post{
 
     private $error = "";
 
-    public function createPost($userId, $data, $files)
-    {
+    public function createPost($userId, $data, $files){
         if (!empty($data['post']) || !empty($files['file']['name']) || isset($data['is_profile_image']) || isset($data['is_cover_image'])) {
             $image = "";
             $hasImage = 0;
@@ -64,25 +62,26 @@ class Post
         return $this->error;
     }
 
-    public function editPost( $data, $files)
-    {
+    public function editPost( $data, $files){
         if (!empty($data['post']) || !empty($files['file']['name'])) {
             $image = "";
             $hasImage = 0;
 
             if(!empty($files['file']['name'])) {
-                $folder = "../uploads/" . $userId . "/";
-                    if (!file_exists($folder)) {
-                        mkdir($folder, 0777, true);
-                        file_put_contents($folder . "index.php", "");
-                    }
-
-                    $editor = new ImageEditor();
-                    $image = $folder . $_FILES['file']['name'] . date("Y-m-d H-i-s") . ".jpg";
-                    move_uploaded_file($_FILES['file']['tmp_name'], $image);
-                    $editor->resizeImage($image, $image, 1500, 1500);
-                    $hasImage = 1;
+                if(isset($userId)){
+                    $folder = "../uploads/" . $userId . "/";
                 }
+                if (!file_exists($folder)) {
+                    mkdir($folder, 0777, true);
+                    file_put_contents($folder . "index.php", "");
+                }
+
+                $editor = new ImageEditor();
+                $image = $folder . $_FILES['file']['name'] . date("Y-m-d H-i-s") . ".jpg";
+                move_uploaded_file($_FILES['file']['tmp_name'], $image);
+                $editor->resizeImage($image, $image, 1500, 1500);
+                $hasImage = 1;
+            }
 
             $post = "";
             if (isset($data['post'])){
@@ -98,7 +97,6 @@ class Post
 
             $DB = new Connection();
             $DB->write($query);
-
         } else {
             $this->error .= "Please type something first!<br>";
         }
@@ -106,8 +104,7 @@ class Post
         return $this->error;
     }
 
-    public function getPosts($userId)
-    {
+    public function getPosts($userId){
         $userId = addslashes($userId);
         $query = "select * from posts where parent = 0 and user_id = '$userId' order by id desc limit 10";
 
@@ -121,8 +118,7 @@ class Post
         }
     }
 
-    public function getComments($id)
-    {
+    public function getComments($id){
         $id = addslashes($id);
         $query = "select * from posts where parent = '$id' order by id asc limit 10";
 
@@ -137,8 +133,7 @@ class Post
     }
 
 
-    public function getPostById($postId)
-    {
+    public function getPostById($postId){
         $postId = addslashes($postId);
         $query = "select * from posts where post_id = '$postId' limit 1";
 
@@ -249,8 +244,7 @@ class Post
         }
     }
 
-    private function createPostId()
-    {
+    private function createPostId(){
         $length = rand(4, 11);
         $number = "";
         for ($i = 0; $i < $length; $i++) {

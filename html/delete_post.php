@@ -1,38 +1,33 @@
 <div id="post">
     <div>
         <?php
-        $image = "../images/male.jpg";
-        if ($row_user['gender'] == "female") {
-            $image = "../images/female.jpg";
-        }
-        if (file_exists($row_user['profile_image'])) {
-            $editor = new ImageEditor();
-            $image = $editor->getThumbProfile($row_user['profile_image']);
-        }
+            $image = "../images/default-avatar.png";
+            if(isset($row_user)) {
+                if ($row_user['gender'] == "female") {
+                    $image = "../images/female.jpg";
+                }
+                if (file_exists($row_user['profile_image'])) {
+                    $editor = new ImageEditor();
+                    $image = $editor->getThumbProfile($row_user['profile_image']);
+                }
+            }
         ?>
-        <img src="<?php echo $image ?>" style="width: 75px; margin-right: 10px; border-radius: 50%;">
+        <img src="<?php echo $image ?>" class="commentUserPic">
     </div>
-    <div style="width: 100%">
-        <div style="font-weight: bold; color: #405b9d;">
+    <div class="fullWidth">
+        <div>
             <?php
-            echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
-            if ($row['is_profile_image']) {
-                $pronoun = "his";
-                if ($row_user['gender'] == "female") {
-                    $pronoun = "her";
+                if(isset($row)) {
+                    echo "<a class='userPostName' href='profile.php?id=$row[user_id]'>";
+                    echo htmlspecialchars($row_user['first_name']) . " " . htmlspecialchars($row_user['last_name']);
+                    echo "</a>";
                 }
-                echo "<span style='font-weight: normal; color: gray'> updated $pronoun profile image</span>";
-            }
-            if ($row['is_cover_image']) {
-                $pronoun = "his";
-                if ($row_user['gender'] == "female") {
-                    $pronoun = "her";
-                }
-                echo "<span style='font-weight: normal; color: gray'> updated $pronoun cover image</span>";
-            }
             ?>
         </div>
-        <?php echo htmlspecialchars($row['post']); ?>
+        <div style="margin: 5px 5px 7px 10px; font-size: 17px;">
+            <?php echo htmlspecialchars($row['post']); ?>
+        </div>
+
         <br><br>
         <?php
             if (file_exists($row['image'])) {

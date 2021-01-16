@@ -7,10 +7,15 @@
         }
     ?>
     <a href="profile.php?id=<?php echo $friend_row['user_id']; ?>">
-        <img id="friendsImg" style="width: 75px; border-radius: 50%;" src="<?php echo $image ?>">
+        <img class="commentUserPic" src="<?php echo $image ?>">
         <br>
-        <div style="text-decoration: none; color: #0392ce;">
-            <?php echo $friend_row['first_name'] . " " . $friend_row['last_name']; ?>
+        <div>
+            <?php
+                    echo "<a class='userPostName' href='profile.php?id=$friend_row[user_id]'>";
+                    echo htmlspecialchars($friend_row['first_name']) . " " . htmlspecialchars($friend_row['last_name']);
+                    echo "</a>";
+
+            ?>
         </div>
         <br>
     </a>

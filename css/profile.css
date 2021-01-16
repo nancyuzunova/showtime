@@ -225,9 +225,80 @@ textarea{
     text-align: center;
 }
 
+.left{
+    text-align: left;
+}
+
 .errorDiv{
     color: #0392ce;
     font-size: 18px;
     width: 380px;
     text-align: center;
+}
+
+.fullWidth{
+    width: 100%;
+}
+
+.commentUserPic{
+    width: 75px;
+    margin: 5px 10px 0 5px;
+    border-radius: 50%;
+}
+
+.userPostName{
+    text-decoration: none;
+    color: #0392ce;
+    font-weight: bold;
+}
+
+.updatedText{
+    font-weight: normal;
+    color: gray;
+}
+
+.postRightText{
+    float: right;
+    color: #999;
+}
+
+.likeComment{
+    text-decoration: none;
+    color: #0392ce;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.whoLiked{
+    text-decoration: none;
+    color: #0392ce;
+    font-size: 13px
+}
+
+.editDelDiv1{
+    min-height: 400px;
+    flex: 2.5;
+    padding: 20px 0 20px 20px;
+}
+
+.editDelDiv2{
+    border: solid thin #aaa;
+    padding: 10px;
+    background-color: white;
+}
+
+.indexUserImage{
+    width: 150px;
+    border-radius: 50%;
+    border: solid 2px white;
+}
+
+.changeButtons{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000bb;
+    z-index: 10;
+    position: absolute;
 }

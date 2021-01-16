@@ -44,11 +44,8 @@
         <?php include("header.php") ?>
         <!--Cover area-->
         <div id="profileMainDiv">
-           
-
             <!-- below cover area-->
             <div id="mainContain">
-
                 <!--friends area-->
                 <div style="min-height: 400px; flex: 1;">
                     <div id="friendsBar" style="text-align: center; font-size: 20px; color: #405d9b; background-color: #d0d8e4">
@@ -59,15 +56,15 @@
                                 $image = $editor->getThumbProfile($userData['profile_image']);
                             }
                         ?>
-                        <a href="profile.php"><img style="width: 150px; border-radius: 50%; border: solid 2px white;" src="<?php echo $image?>"></a>
+                        <a href="profile.php"><img class="indexUserImage" src="<?php echo $image?>"></a>
                         <br>
-                        <a style="text-decoration: none; color: #0392ce;" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
+                        <a class="userPostName" href="profile.php"><?php echo $userData['first_name'] . " " . $userData['last_name'] ?></a>
                     </div>
                 </div>
 
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                <div class="editDelDiv1">
+                    <div class="editDelDiv2">
                         <form method="post" enctype="multipart/form-data">
                             <textarea name="post" placeholder="What's on your mind?"></textarea>
                             <input type="file" name="file" class="uploadBox">
@@ -104,14 +101,8 @@
                             }
                         ?>
                     </div>
-
-
-
                 </div>
             </div>
-
         </div>
-
     </body>
-
 </html>

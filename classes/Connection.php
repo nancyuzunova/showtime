@@ -1,19 +1,17 @@
 <?php
 
-class Connection
-{
+class Connection{
+
     private $host = "localhost";
     private $username = "root";
     private $password = "";
     private $db = "showtime";
 
-    function connect()
-    {
+    function connect(){
         return mysqli_connect($this->host, $this->username, $this->password, $this->db);
     }
 
-    function read($query)
-    {
+    function read($query){
         $conn = $this->connect();
         $result = mysqli_query($conn, $query);
         if (!$result){
@@ -27,8 +25,7 @@ class Connection
         }
     }
 
-    function write($query)
-    {
+    function write($query){
         $conn = $this->connect();
         return mysqli_query($conn, $query);
     }

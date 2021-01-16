@@ -61,27 +61,27 @@
             <!-- below cover area-->
             <div id="mainContain">
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                <div class="editDelDiv1">
+                    <div class="editDelDiv2">
                         <form method="post" enctype="multipart/form-data">
                             <?php
-                            if ($error != "") {
-                                echo $error;
-                            } else {
-                                if ($row) {
-                                    echo "Edit post.<br><br>";
-                                    echo '<textarea name="post" placeholder="whats on your mind?">'.$row['post'].'</textarea>
-                                          <input type="file" name="file">';
-                                    echo "<input style='width: 100px' id='postButton' type='submit' value='Save'>";
-                                    echo "<input type='hidden' name='postId' value='$row[post_id]'>";
+                                if ($error != "") {
+                                    echo $error;
+                                } else {
+                                    if ($row) {
+                                        echo "Edit post.<br><br>";
+                                        echo '<textarea name="post" placeholder="whats on your mind?">'.$row['post'].'</textarea>
+                                              <input type="file" name="file">';
+                                        echo "<input class='fullWidth' id='postButton' type='submit' value='Save'>";
+                                        echo "<input type='hidden' name='postId' value='$row[post_id]'>";
 
-                                    if (file_exists($row['image'])) {
-                                        $editor = new ImageEditor();
-                                        $postImage = $editor->getThumbPost($row['image']);
-                                        echo "<br><br> <div style='text-align: center;'><img src='$postImage' style='width: 50%;'></div>";
+                                        if (file_exists($row['image'])) {
+                                            $editor = new ImageEditor();
+                                            $postImage = $editor->getThumbPost($row['image']);
+                                            echo "<br><br> <div class='centered'><img src='$postImage' style='width: 50%;'></div>";
+                                        }
                                     }
                                 }
-                            }
                             ?>
                             <br>
                         </form>

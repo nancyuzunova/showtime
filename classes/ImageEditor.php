@@ -146,6 +146,7 @@ class ImageEditor{
             return $filename;
         }
     }
+
     public function getThumbPost($filename){
         $thumbNail = $filename . "_post_thumb.jpg";
         if(file_exists($thumbNail)){
@@ -159,5 +160,4 @@ class ImageEditor{
             return $filename;
         }
     }
-
 }

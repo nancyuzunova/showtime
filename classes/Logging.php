@@ -1,7 +1,7 @@
 <?php
 
-class Logging
-{
+class Logging{
+
     private $error = "";
 
     public function login($data){
@@ -16,14 +16,12 @@ class Logging
         }
 
         $query = "select * from users where email = '$email' limit 1";
-
         $DB = new Connection();
         $result = $DB->read($query);
 
         if ($result){
             $user = $result[0];
             if (password_verify($password, $user['password'])){
-                //create a session data
                 $_SESSION['showtime_userid'] = $user['user_id'];
             } else {
                 $this->error .= "Wrong password!<br>";
@@ -31,6 +29,7 @@ class Logging
         } else {
             $this->error .= "Couldn't find your email!<br>";
         }
+
         return $this->error;
     }
 }

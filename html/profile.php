@@ -68,7 +68,7 @@
         <?php include("header.php") ?>
 
         <!--Change profile image-->
-        <div id="changeProfileImage" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb; z-index: 10; position: absolute;">
+        <div id="changeProfileImage" class="changeButtons">
             <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
                 <form method="post" action="profile.php?change=profile" enctype="multipart/form-data">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
@@ -87,14 +87,14 @@
         </div>
 
         <!--Change cover image-->
-        <div id="changeCoverImage" style="display: none; position: absolute; width: 100%; height: 100%; background-color: #000000bb; z-index: 10; position: absolute;">
+        <div id="changeCoverImage" class="changeButtons">
             <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
                 <form method="post" action="profile.php?change=cover" enctype="multipart/form-data">
                     <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
                         <input type="file" name="file">
                         <input id="postButton" style="width: 120px;" type="submit" value="Change" style="width: 100px;">
                         <br>
-                        <div style="text-align: center;">
+                        <div class="centered">
                             <br><br>
                             <?php
                                 echo "<img src='$userData[cover_image]' style='max-width: 500px;'>";
