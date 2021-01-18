@@ -1,4 +1,4 @@
-<div style="min-height: 400px; width: 100%; background-color: white; text-align: center;">
+<div class="settingsDiv1">
     <div style="padding: 20px;">
         <?php
             $likes = new Post();

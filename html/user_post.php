@@ -43,7 +43,7 @@
                 ?>
             </span>
         </div>
-        <div style="margin: 5px 5px 7px 10px; font-size: 17px;">
+        <div class="postContent">
             <?php echo htmlspecialchars($row['post']); ?>
         </div>
 
@@ -51,7 +51,7 @@
             if (file_exists($row['image'])) {
                 $editor = new ImageEditor();
                 $postImage = $editor->getThumbPost($row['image']);
-                echo "<div style='margin: margin: 5px 5px 7px 10px;'>";
+                echo "<div class='postContent'>";
                 echo "<img src='$postImage' style='width: 80%;'>";
                 echo "</div>";
             }

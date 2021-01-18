@@ -68,14 +68,14 @@
         <?php include("header.php") ?>
 
         <!--Change profile image-->
-        <div id="changeProfileImage" class="changeButtons">
-            <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
+        <div class="changeButtons">
+            <div class="changePicBox">
                 <form method="post" action="profile.php?change=profile" enctype="multipart/form-data">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                    <div class="editDelDiv2">
                         <input type="file" name="file">
-                        <input id="postButton" style="width: 120px;" type="submit" value="Change" style="width: 100px;">
+                        <input id="postButton" type="submit" value="Change" style="width: 100px;">
                         <br>
-                        <div style="text-align: center;">
+                        <div class="centered">
                             <br><br>
                             <?php
                                 echo "<img src='$userData[profile_image]' style='max-width: 500px;'>";
@@ -87,12 +87,12 @@
         </div>
 
         <!--Change cover image-->
-        <div id="changeCoverImage" class="changeButtons">
-            <div style="min-height: 400px; max-width: 600px; margin: auto; flex: 2.5; padding: 20px 0 20px 20px;">
+        <div class="changeButtons">
+            <div class="changePicBox">
                 <form method="post" action="profile.php?change=cover" enctype="multipart/form-data">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                    <div class="editDelDiv2">
                         <input type="file" name="file">
-                        <input id="postButton" style="width: 120px;" type="submit" value="Change" style="width: 100px;">
+                        <input id="postButton" type="submit" value="Change" style="width: 100px;">
                         <br>
                         <div class="centered">
                             <br><br>

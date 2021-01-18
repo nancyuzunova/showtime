@@ -33,15 +33,13 @@
 
     <body>
         <?php include("header.php") ?>
-
         <!--Cover area-->
         <div id="profileMainDiv">
-
             <!-- below cover area-->
             <div id="mainContain">
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                <div class="editDelDiv1">
+                    <div class="editDelDiv2">
                         <?php
                             $user = new User();
                             $editor = new ImageEditor();
@@ -54,7 +52,6 @@
                                 echo "No results were found";
                             }
                         ?>
-                        <br style="clear: both;">
                     </div>
                 </div>
             </div>

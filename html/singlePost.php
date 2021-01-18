@@ -53,15 +53,13 @@
 
     <body>
         <?php include("header.php") ?>
-
         <!--Cover area-->
         <div id="profileMainDiv">
-
             <!-- below cover area-->
             <div id="mainContain">
                 <!--post area-->
-                <div style="min-height: 400px; flex: 2.5; padding: 20px 0 20px 20px;">
-                    <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                <div class="editDelDiv1">
+                    <div class="editDelDiv2">
                         <?php
                             $user = new User();
                             $editor = new ImageEditor();
@@ -71,13 +69,13 @@
                             }
                         ?>
                         <br style="clear: both;">
-                        <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
+                        <div class="inForm">
                             <form method="post" enctype="multipart/form-data">
                                 <textarea name="post" placeholder="Your comment here."></textarea>
                                 <input type="hidden" name="parent" value="<?php echo $row['post_id'] ?>">
                                 <input type="file" name="file">
                                 <input id="postButton" type="submit" value="post">
-                                <br>
+                                <br><br>
                             </form>
                         </div>
                         <?php
