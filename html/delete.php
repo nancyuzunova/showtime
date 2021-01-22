@@ -73,7 +73,7 @@
                                             include("delete_post.php");
 
                                             echo "<input class='fullWidth' id='postButton' type='submit' value='Delete'>";
-                                            echo "<input type='hidden' name='postId' value='$row[post_id]'>";
+                                            echo "<br><input type='hidden' name='postId' value='$row[post_id]'>";
                                         }
                                     }
                                 ?>

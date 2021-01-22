@@ -68,7 +68,7 @@
         <?php include("header.php") ?>
 
         <!--Change profile image-->
-        <div class="changeButtons">
+        <div id="changeProfileImage" class="changeButtons">
             <div class="changePicBox">
                 <form method="post" action="profile.php?change=profile" enctype="multipart/form-data">
                     <div class="editDelDiv2">
@@ -87,7 +87,7 @@
         </div>
 
         <!--Change cover image-->
-        <div class="changeButtons">
+        <div id="changeCoverImage" class="changeButtons">
             <div class="changePicBox">
                 <form method="post" action="profile.php?change=cover" enctype="multipart/form-data">
                     <div class="editDelDiv2">
