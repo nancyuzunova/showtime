@@ -9,7 +9,7 @@
 
                 if(is_array($settings)) {
                     echo "<br><p style='color: #0392ce; font-weight: bold;'>About me:</p><br>
-                    <div id='textbox' class='aboutTextbox'>".htmlspecialchars($settings['about'])."</div>";
+                    <div class='aboutTextbox'>".htmlspecialchars($settings['about'])."</div>";
                 }
             ?>
         </form>

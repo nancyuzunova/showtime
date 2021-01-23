@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include("loader.php");
 
     //check if user is logged in
