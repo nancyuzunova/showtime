@@ -1,0 +1,62 @@
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (85037422, 'Rachel' , 'Green' , 'rachel.green@gmail.com' ,'$2y$10$9njn117an46hDA00aKWGFOmez5mSkGH6H4JwzT2J9OUTzDKw.zLAa',
+'female' , 'rachel.green', '../uploads/85037422/rachel.jpg2021-01-10 19-12-37.jpg', '../uploads/85037422/rachel_cover.jpg2021-01-10 19-16-17.jpg');
+
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (7065760, 'Monica' , 'Geller' , 'monica.geller@gmail.com' ,'$2y$10$H6Xd.fpux3yAB0yxEc9TruCgLQ76oLCr0KG6B5I0CBY7wAGWnNCyi',
+'female' , 'monica.geller', '../uploads/7065760/monica.jpg2021-01-10 20-23-09.jpg', '../uploads/7065760/monica_cover.jpg2021-01-10 19-45-26.jpg');
+
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (12591248, 'Ross' , 'Geller' , 'ross.geller@gmail.com' ,'$2y$10$PJ7cddwQy2p7jaoMMQDQeejFGomAvi02DjIQY8omGH0X.Ujdjmrue',
+'male' , 'ross.geller', '../uploads/12591248/ross.jpg2021-01-10 20-41-01.jpg', '../uploads/12591248/friends-logo-font.jpg2021-01-10 20-37-57.jpg');
+
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (80355169, 'Joey' , 'Tribbiani' , 'joey.t@gmail.com' ,'$2y$10$2ZZS4J.e9Y16LfBhhy/Jqe2QJrGKinIeNYPXNWbRtQZdmjVK9b6Km',
+'male' , 'joey.tribbiani', '../uploads/80355169/joey.jpg2021-01-10 20-26-51.jpg', '../uploads/80355169/joey_cover.jpg2021-01-10 20-26-02.jpg');
+
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (2147483647, 'Chandler' , 'Bing' , 'chandler.bing@yahoo.com' ,'$2y$10$GO5bvLvjOR4zVi0Y0OLGneATYUngg90j4W5s2WCvKydQ4SXHfTUn2',
+'male' , 'chandler.bing', '../uploads/2147483647/chandler.jpg2021-01-10 20-43-51.jpg', '../uploads/2147483647/friends-logo-font.jpg2021-01-10 20-42-49.jpg');
+
+insert into users (user_id, first_name, last_name, email, password, gender, url, profile_image, cover_image)
+values (4551029, 'Phoebe' , 'Buffay' , 'phoebe.b@gmail.com' ,'$2y$10$I76S2/fYdIHT.YZvVglolOO2trwmoT/YII6tFmg6/6WiN.BPJmtJy',
+'female' , 'phoebe.buffay', '../uploads/4551029/phoebe.jpg2021-01-10 19-29-08.jpg', '../uploads/4551029/phoebe_cover.jpg2021-01-10 19-30-02.jpg');
+
+insert into posts (post_id, user_id, post, has_image, is_profile_image, is_cover_image) values (34998109, 85037422,
+'I decided! I'm gonna go get one of those job things... #yougogirl', 0, 0, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (3380, 85037422,
+'../uploads/85037422/rachel.jpg2021-01-10 19-12-37.jpg', 1, 1, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (4934817, 85037422,
+'../uploads/85037422/rachel_cover.jpg2021-01-10 19-16-17.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (834354541, 4551029,
+'../uploads/4551029/phoebe.jpg2021-01-10 19-29-08.jpg', 1, 1, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (9199, 4551029,
+'../uploads/4551029/phoebe_cover.jpg2021-01-10 19-30-02.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (423699974, 7065760,
+'../uploads/7065760/monica_cover.jpg2021-01-10 19-45-26.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (568, 7065760,
+'../uploads/7065760/monica.jpg2021-01-10 20-23-09.jpg', 1, 1, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (21396701, 80355169,
+'../uploads/80355169/joey_cover.jpg2021-01-10 20-26-02.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (98045961, 80355169,
+'../uploads/80355169/joey.jpg2021-01-10 20-26-51.jpg', 1, 1, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (2743, 12591248,
+'../uploads/12591248/friends-logo-font.jpg2021-01-10 20-37-57.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (2147483447, 12591248,
+'../uploads/12591248/ross.jpg2021-01-10 20-41-01.jpg', 1, 1, 0);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (4104064, 2147483647,
+'../uploads/2147483647/friends-logo-font.jpg2021-01-10 20-42-49.jpg', 1, 0, 1);
+
+insert into posts (post_id, user_id, image, has_image, is_profile_image, is_cover_image) values (214748364, 2147483647,
+'../uploads/2147483647/chandler.jpg2021-01-10 20-43-51.jpg', 1, 1, 0);
